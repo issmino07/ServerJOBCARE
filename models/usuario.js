@@ -28,6 +28,10 @@ const UsuarioSchema = Schema({
         type: Boolean,
         default: false
     },
+    ninos: {
+        type: String
+       
+    },
 });
 
 

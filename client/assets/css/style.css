@@ -2195,7 +2195,7 @@ Buttons
   .btn-outline-primary:hover, .btn-outline-primary:focus, .btn-outline-primary.focus {
     background: #56c2c6;
     -webkit-box-shadow: 0 14px 26px -12px rgba(116, 96, 238, 0.42), 0 4px 23px 0 rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(116, 96, 238, 0.2);
-    box-shadow: 0 14px 26px -12px rgba(116, 96, 238, 0.42), 0 4px 23px 0 rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(116, 96, 238, 0.2);
+    box-shadow: 0 14px 26px -12px rgba(116, 96, 238, 0.42), 0 4px 23px 0 rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(40, 173, 206, 0.2);
     color: #ffffff;
     border-color: #56c2c6; }
   .btn-outline-primary.active, .btn-outline-primary:active, .btn-outline-primary:focus {
