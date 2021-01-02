@@ -18,11 +18,16 @@ app.use(express.static(path.join(__dirname,'client')))
 // Lectura y parseo del body
 app.use( express.json() );
 
+//verificacion de email
+var verificarRoutes = require('./controllers/verificarEmail');
+
 // Base de datos
 dbConnection();
 
 
 // Rutas
+app.use('/', verificarRoutes);
+
 app.use( '/api/usuarios', require('./routes/usuarios') );
 app.use( '/api/login', require('./routes/auth') );
 app.use('/api/localidades', require('./routes/localidades'));
