@@ -3,9 +3,9 @@
 */
 const { Router } = require('express');
 
+var mdAutenticacion = require('../middlewares/autenticacion');
 
-
-const { getUsuarios, crearUsuario, actualizarUsuario, borrarUsuario } = require('../controllers/usuarios');
+const { getUsuarios, crearUsuario, actualizarUsuarioPlan, borrarUsuario, actualizarUser } = require('../controllers/usuarios');
 //const { validarJWT } = require('../middlewares/validar-jwt');
 
 
@@ -19,12 +19,19 @@ router.post( '/',
     crearUsuario 
 );
 
-router.put( '/:id',
-    [
+router.put( '/',
     
-    ],
-    actualizarUsuario
+     //   mdAutenticacion.verificaToken,
+
+    actualizarUser
 );
+router.put( '/plan',
+    
+     //   mdAutenticacion.verificaToken,
+
+     actualizarUsuarioPlan
+);
+
 
 router.delete( '/:id',
   

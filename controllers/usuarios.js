@@ -7,7 +7,7 @@ const { generarJWT } = require('../helpers/jwt');
 
 const getUsuarios = async(req, res) => {
 
-    const usuarios = await Usuario.find({}, ' email role');
+    const usuarios = await Usuario.find({}, ' email role img');
 
     res.json({
         ok: true,
@@ -151,6 +151,100 @@ const borrarUsuario = async(req, res = response ) => {
 
 
 }
+//la veija escuela  metodos
+const actualizarUser = async (req, res) => {
+
+    var id = req.params.id;
+    var body = req.body;
+
+ await   Usuario.findById(id, (err, usuario) => {
+
+
+        if (err) {
+            return res.status(500).json({
+                ok: false,
+                mensaje: 'Error al buscar usuario',
+                errors: err
+            });
+        }
+
+        if (!usuario) {
+            return res.status(400).json({
+                ok: false,
+                mensaje: 'El usuario con el id ' + id + ' no existe',
+                errors: { message: 'No existe un usuario con ese ID' }
+            });
+        }
+
+
+        usuario.usuario = body.usuario;
+        usuario.email = body.email;
+        usuario.role = body.role;
+        usuario.img = body.img;
+     
+        usuario.save((err, usuarioGuardado) => {
+
+            if (err) {
+                return res.status(400).json({
+                    ok: false,
+                    mensaje: 'Error al actualizar usuario',
+                    errors: err
+                });
+            }
+
+
+      /*      let usuario = req.body;
+            sendMail(usuario, info => {
+              console.log(`El correo se ha enviado 😃 y la identificación es ${info.messageId}`);
+            
+            }); */
+
+       //       usuarioGuardado.password = ':)';
+         
+         
+            res.status(200).json({
+                ok: true,
+                usuario: usuarioGuardado
+            });
+
+        });
+
+    }); 
+
+};
+// ACTUALIZAR OPCION
+const actualizarUsuarioPlan =  (req, res) => {
+    //Encuentra un cliente y actualízalo
+    Usuario.findByIdAndUpdate(req.body._id, req.body)
+        .then(usuario => {
+            if (!usuario) {
+                return res.status(404).json({
+                    msg: "Opciones not found with id " + req.params._id
+                });
+            }
+
+            usuario.tipoPlan = body.tipoPlan;
+            usuarioGuardado.password = ':)';
+         
+         
+            res.status(200).json({
+                ok: true,
+                usuario: usuarioGuardado
+            });
+     
+           // res.json(usuario);
+        }).catch(err => {
+            if (err.kind === 'ObjectId') {
+                return res.status(404).json({
+                    msg: "Opciones not found with id " + req.params._id
+                });
+            }
+            return res.status(500).json({
+                msg: "Error updating opciones with id " + req.params._id
+            });
+        });
+};
+
 
 
 
@@ -158,5 +252,7 @@ module.exports = {
     getUsuarios,
     crearUsuario,
     actualizarUsuario,
-    borrarUsuario
+    actualizarUser,
+    borrarUsuario,
+    actualizarUsuarioPlan
 }
