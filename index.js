@@ -33,7 +33,7 @@ dbConnection();
 
 
 // Rutas
-app.use('/', verificarRoutes);
+app.use('/api', verificarRoutes);
 app.use('/api/login', loginRoutes);
 app.use( '/api/usuarios', require('./routes/usuarios') );
 app.use('/api/upload',uploadRoutes); 

@@ -156,7 +156,7 @@
           }
       });
       </script>
-<script src="runtime.acf0dec4155e77772545.js" defer></script><script src="polyfills.35a5ca1855eb057f016a.js" defer></script><script src="main.7025ba431144b184c467.js" defer></script></body>
+<script src="runtime.acf0dec4155e77772545.js" defer></script><script src="polyfills.35a5ca1855eb057f016a.js" defer></script><script src="main.d5edb12337f02168c453.js" defer></script></body>
 
 <!--script>
     $(document).ready(function(){
@@ -164,7 +164,7 @@
         $("#send_email").click(function(){		
             to=$("#to").val();		
             $("#message").text("Enviando correo electrónico ... Espere");
-            $.get("http://localhost:4500/send",{to:to},function(data){
+            $.get(this.url+'/send',{to:to},function(data){
             console.log(data)
             if(data=="sent")
             {
