@@ -15,6 +15,9 @@ const OfertasShema = mongoose.Schema({
  estado: String,
  tipoPlan: String,
  categorias: String,
+ provincia: {   type: String },
+
+ ciudad: { type: String },
  fechaReporte: { type: Date, required: true, default: Date.now },
  usuario: {
      type: mongoose.Types.ObjectId, ref: 'Usuario'

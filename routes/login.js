@@ -126,10 +126,10 @@ function obtenerMenu(ROLE) {
     } 
     if (ROLE === 'USER_ROLE') {
         menu[0].submenu.unshift( 
-            { titulo: 'Planes', url: '/dashboard/planes' }, 
+          
             { titulo : 'Formulario de Inscripción', url: '/dashboard/admininico' }, 
             { titulo: 'Editor de oferta de empleo', url: '/dashboard/verofertas' },
-      
+            { titulo: 'Planes', url: '/dashboard/planes' }, 
      //   { titulo : 'Crear usuarios', url: '/Registrar' },
      //   { titulo: 'Administrar usuarios', url: '/usuarios' },
      //   { titulo : 'Administrador de tareas', url: '/adminTareas' },
@@ -143,9 +143,10 @@ function obtenerMenu(ROLE) {
     
     if (ROLE === 'EMPLEADOR_ROLE') {
         menu[0].submenu.unshift(  
-            { titulo: 'Planes', url: '/dashboard/planes' }, 
+           
             { titulo : 'Formulario de Inscripción', url: '/dashboard/admininico' }, 
             { titulo: 'Editor de oferta de empleo', url: '/dashboard/verofertas' },
+            { titulo: 'Planes', url: '/dashboard/planes' }
         );
       
     }

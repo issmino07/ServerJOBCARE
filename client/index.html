@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="es">
 <head>
   <meta charset="utf-8">
   <title>JOB & CARE</title>
@@ -27,7 +27,7 @@
      <link href="./assets/plugins/timepicker/bootstrap-timepicker.min.css" rel="stylesheet">
      <link href="./assets/plugins/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
     
-<link rel="stylesheet" href="styles.1d0b7237f43a338f1379.css"></head>
+<link rel="stylesheet" href="styles.6e48f92ffa4ee7d293dd.css"></head>
 <body class="fix-header card-no-border fix-sidebar">
 
   <!-- ============================================================== -->
@@ -50,7 +50,7 @@
 
    <!-- All Jquery -->
     <!-- ============================================================== -->
-    
+    <script src="./assets/js/custom.js"></script>
     <script src="./assets/plugins/jquery/jquery.min.js"></script>
     <!-- Bootstrap tether Core JavaScript -->
     <script src="./assets/plugins/bootstrap/js/popper.min.js"></script>
@@ -156,7 +156,26 @@
           }
       });
       </script>
-<script src="runtime.acf0dec4155e77772545.js" defer></script><script src="polyfills.35a5ca1855eb057f016a.js" defer></script><script src="main.63f14af397d4f07d689a.js" defer></script></body>
+<script src="runtime.acf0dec4155e77772545.js" defer></script><script src="polyfills.35a5ca1855eb057f016a.js" defer></script><script src="main.7025ba431144b184c467.js" defer></script></body>
 
+<!--script>
+    $(document).ready(function(){
+        var from,to,subject,text;
+        $("#send_email").click(function(){		
+            to=$("#to").val();		
+            $("#message").text("Enviando correo electrónico ... Espere");
+            $.get("http://localhost:4500/send",{to:to},function(data){
+            console.log(data)
+            if(data=="sent")
+            {
+                $("#message").empty().text("El correo electrónico con su clave se envió a "+to+" Por favor revise la bandeja de entrada o spam !");
+            }
+          
+    
+    });
+        });
+    });
+    </script-->
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAXx41aKyQCxdHC7ixwG0rfOvmMAcvYJZk&libraries=places&language=es"></script>
+
 </html>
