@@ -59,7 +59,7 @@ app.post('/send',function(req,res){
                 cid: 'download',
             },
 		],
-		from: '"JOB & CARE"',
+		from: '"JOB & CARE" <admin@jobandcare.com>',
 		to : maillist,
 		subject : "Confirme su cuenta de correo electrónico",
 		html : "Hola,<br> Bienvenido a JOB & CARE<br> <p>Su codigo es: "+rand+" </p> "	

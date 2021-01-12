@@ -153,7 +153,7 @@ function obtenerMenu(ROLE) {
 
     if (ROLE === 'EMPLEADO_ROLE') {
         menu[0].submenu.unshift(  
-       // { titulo : 'Requisitos', url: '/requisito' }, 
+        { titulo : 'Hoja de Vida', url: '/dashboard/hojavida' }, 
       //  { titulo : 'Solicitud de Pago', url: '/solicitud' },
       //  { titulo : 'Comprobantes de Pago', url: '/comprobante' },
       //  { titulo : 'Actualizar Los requisitos/Descargar Certificado', url: '/historial' } 
