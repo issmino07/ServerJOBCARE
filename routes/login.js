@@ -127,9 +127,9 @@ function obtenerMenu(ROLE) {
     if (ROLE === 'USER_ROLE') {
         menu[0].submenu.unshift( 
           
-            { titulo : 'Formulario de Inscripción', url: '/dashboard/admininico' }, 
-            { titulo: 'Editor de oferta de empleo', url: '/dashboard/verofertas' },
-            { titulo: 'Planes', url: '/dashboard/planes' }, 
+       //     { titulo : 'Formulario de Inscripción', url: '/dashboard/admininico' }, 
+         //   { titulo: 'Editor de oferta de empleo', url: '/dashboard/verofertas' },
+        //    { titulo: 'Planes', url: '/dashboard/planes' }, 
      //   { titulo : 'Crear usuarios', url: '/Registrar' },
      //   { titulo: 'Administrar usuarios', url: '/usuarios' },
      //   { titulo : 'Administrador de tareas', url: '/adminTareas' },
@@ -154,8 +154,8 @@ function obtenerMenu(ROLE) {
     if (ROLE === 'EMPLEADO_ROLE') {
         menu[0].submenu.unshift(  
         { titulo : 'Hoja de Vida', url: '/dashboard/hojavida' }, 
-      //  { titulo : 'Solicitud de Pago', url: '/solicitud' },
-      //  { titulo : 'Comprobantes de Pago', url: '/comprobante' },
+        { titulo : 'Editar Hoja de vida', url: '/dashboard/verhoja' },
+        { titulo : 'Mis Suscripciones', url: '/dashboard/planes/empleados' },
       //  { titulo : 'Actualizar Los requisitos/Descargar Certificado', url: '/historial' } 
         
         );

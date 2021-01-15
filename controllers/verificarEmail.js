@@ -2,11 +2,14 @@ var express=require('express');
 var nodemailer = require("nodemailer");
 var app=express();
 const cors = require('cors');
+
 const UsuarioEmail = require('../models/usuarioEmail');
 app.use( cors() );
 /*
 	Aquí estamos configurando los detalles de su servidor SMTP. STMP es un servidor de correo que se encarga de enviar y recibir correo electrónico.
 */
+
+
 var smtpTransport = nodemailer.createTransport({
   //  service: "Gmail",
   //  auth: {
@@ -21,7 +24,7 @@ var smtpTransport = nodemailer.createTransport({
 		pass: 'C@po032786'
 	},
 	tls: {
-		rejectUnauthorized: false
+		rejectUnauthorized: false  
 	}
     
 });
@@ -67,7 +70,7 @@ app.post('/send',function(req,res){
 
 	console.log(mailOptions);
 
-	smtpTransport.sendMail(mailOptions, function(error, response){
+	smtpTransport.sendMail( mailOptions, function(error, response){
    	 if(error){
         	console.log(error);
 		res.end("error");
