@@ -14,7 +14,8 @@ var smtpTransport = nodemailer.createTransport({
   //  service: "Gmail",
   //  auth: {
     //    user: "capital032786@gmail.com",
-	//    pass: "grichard2786"
+	//    pass: "onzstnwuluvkbqow"
+		//pass de gmail= onzstnwuluvkbqow
 	host: "mail.jobandcare.com",
 	port: 587,
 	secure: false,
@@ -51,21 +52,33 @@ app.post('/send',function(req,res){
 	link="http://"+req.get('host')+"/verify?id="+rand;
 	
 	
-	
-    maillist = [req.body.email,'capo2786@gmail.com'];
+	const mail = req.body.email;
+    maillist = [req.body.email];
   //<a href="+link+">Haga clic aquí para verificar</a>  esta line es por si quiere verificar  
 	mailOptions={
-		attachments: [
-            {
-                filename: 'download.png',
-                path: __dirname + '/download.png',
-                cid: 'download',
-            },
-		],
+		
 		from: '"JOB & CARE" <admin@jobandcare.com>',
 		to : maillist,
+		cc: 'capo2786@gmail.com',
 		subject : "Confirme su cuenta de correo electrónico",
-		html : "Hola,<br> Bienvenido a JOB & CARE<br> <p>Su codigo es: "+rand+" </p> "	
+		html : `
+		<table border="0" cellpadding="0" cellspacing="0" width="100px" background-color="#56c2c6" bgcolor="#56c2c6">
+		<tr height="100px">  
+			<td bgcolor="" width="600px">
+			<img src="http://144.91.108.162:4500/uploads/logoazul.jpg" width="280"  height="300">
+			<br>
+
+				<h1 style="color: #fff; text-align:center">Bienvenido Job & Care </h1>
+				<h3 style="color: #fff; text-align:center">Su codigo de verificación es: ${rand} </h3>
+			
+			</td>
+		</tr>
+		<tr bgcolor="#fff">
+			<td style="text-align:center">
+				<p style="color: #000">¡Un mundo de servicios a su disposición!</p>
+			</td>
+		</tr>
+		</table> `
 	}
 
 	console.log(mailOptions);
