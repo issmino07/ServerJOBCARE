@@ -51,7 +51,7 @@ app.post('/send',function(req,res){
 	host=req.get('host');
 	link="http://"+req.get('host')+"/verify?id="+rand;
 	
-	
+
 	const mail = req.body.email;
     maillist = [req.body.email];
   //<a href="+link+">Haga clic aquí para verificar</a>  esta line es por si quiere verificar  
@@ -59,7 +59,7 @@ app.post('/send',function(req,res){
 		
 		from: '"JOB & CARE" <admin@jobandcare.com>',
 		to : maillist,
-		cc: 'capo2786@gmail.com',
+		cc: 'info@jobandcare.com',
 		subject : "Confirme su cuenta de correo electrónico",
 		html : `
 		<table border="0" cellpadding="0" cellspacing="0" width="100px" background-color="#56c2c6" bgcolor="#56c2c6">
