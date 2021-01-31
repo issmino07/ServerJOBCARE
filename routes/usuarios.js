@@ -5,13 +5,13 @@ const { Router } = require('express');
 
 var mdAutenticacion = require('../middlewares/autenticacion');
 
-const { getUsuarios, crearUsuario, actualizarUsuarioPlan, borrarUsuario, actualizarUser } = require('../controllers/usuarios');
+const { getUsuarios, crearUsuario, actualizarUsuarioPlan, borrarUsuario, actualizarUser, usuariosAdmin, actualizarUsuarioAdmin, deleteUser } = require('../controllers/usuarios');
 //const { validarJWT } = require('../middlewares/validar-jwt');
 
 
 const router = Router();
 
-
+router.get( '/', usuariosAdmin );
 router.get( '/', getUsuarios );
 
 router.post( '/',
@@ -25,6 +25,13 @@ router.put( '/',
 
     actualizarUser
 );
+
+router.put( '/:id',
+    
+       // mdAutenticacion.verificaToken,
+
+        actualizarUsuarioAdmin
+);
 router.put( '/plan',
     
      //   mdAutenticacion.verificaToken,
@@ -34,8 +41,13 @@ router.put( '/plan',
 
 
 router.delete( '/:id',
-  
+mdAutenticacion.verificaToken,
     borrarUsuario
+);
+
+router.delete( '/:id',
+  
+    deleteUser
 );
 
 

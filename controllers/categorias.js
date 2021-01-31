@@ -39,7 +39,7 @@ const getCategoria = (req, res) => {
 
 
 // ACTUALIZAR OPCION
-const actualizarLocalidad=  (req, res) => {
+const actualizarLocalidad =  (req, res) => {
     //Encuentra un cliente y actualízalo
     Localidades.findByIdAndUpdate(req.body._id, req.body, { new: true })
         .then(opcionesGenerales => {

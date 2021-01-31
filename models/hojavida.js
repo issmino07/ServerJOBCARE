@@ -22,6 +22,7 @@ const HojavidaShema = mongoose.Schema({
     experiencia:String,
     descripcionExperiencia: String,
     nivelEducacion: String,
+    rating: Number,
     estado: String,
      fechaReporte: { type: Date, required: true, default: Date.now },
      usuario: {

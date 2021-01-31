@@ -25,7 +25,7 @@ const crearHoja = (req, res) => {
 
 // todos las opciones
 const getHoja = (req, res) => {
-    Hojavida.find({estado: {$ne: 'NO PUBLICADO' }})
+    Hojavida.find({estado: {$ne: 'NO PUBLICADO' }}).populate('usuario img')
         .then(hoja => {
             res.json(hoja);
         }).catch(err => {

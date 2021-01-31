@@ -3,53 +3,55 @@ const mongoose = require('mongoose');
 
 
 var rolesValidos = {
-   values: ['ADMIN_ROLE', 'USER_ROLE', 'EMPLEADOR_ROLE','EMPLEADO_ROLE', 'PROFESIONAL_ROLE'],
+   values: ['ADMIN_ROLE', 'USER_ROLE', 'EMPLEADOR_ROLE', 'EMPLEADO_ROLE', 'PROFESIONAL_ROLE', 'INACTIVO'],
    message: '{VALUE} no es un rol permitido'
 };
 
 
 const UsuarioSchema = mongoose.Schema({
 
-   usuario: { type: String},  
+   usuario: { type: String },
    email: { type: String, required: true, unique: true },
-   password: { type: String, required: true,},
+   password: { type: String, required: true, },
    img: { type: String },
-   role: {  type: String,
-     // required: true,
-    //  default: 'USER_ROLE',
-      enum: rolesValidos },
+   role: {
+      type: String,
+      // required: true,
+      //  default: 'USER_ROLE',
+      enum: rolesValidos
+   },
 
-   ninos: {   type: Array },
+   ninos: { type: Array },
 
 
    telefono: { type: String },
 
-   clave: {   type: String },
+   clave: { type: String },
 
-   provincia: {   type: String },
+   provincia: { type: String },
 
    ciudad: { type: String },
-   direccion: {  type: String   },
+   direccion: { type: String },
 
-   direccionmapa: { type: String  },
+   direccionmapa: { type: String },
 
-   lavado: {  type: Boolean  },
-   comida: {  type: Boolean},
+   lavado: { type: Boolean },
+   comida: { type: Boolean },
 
    limpieza: { type: Boolean },
-   tareas: { type: Boolean  },
+   tareas: { type: Boolean },
 
-   fecha: {   type: String  },
+   fecha: { type: String },
 
-   experiencia: { type: String  },
+   experiencia: { type: String },
 
-   tipoPlan:{  type: String  },
-   categorias:{ type: String },
+   tipoPlan: { type: String },
+   categorias: { type: String },
 
-   adulto:{ type: Array},
+   adulto: { type: Array },
 
 
-   compania:{
+   compania: {
 
       type: Boolean
    },
@@ -57,7 +59,7 @@ const UsuarioSchema = mongoose.Schema({
 
       type: Boolean
    },
-   actividades:{
+   actividades: {
 
       type: Boolean
    },
@@ -117,7 +119,7 @@ const UsuarioSchema = mongoose.Schema({
 
       type: Boolean
    },
-   
+
 
    adultocheck: {
 
@@ -133,12 +135,12 @@ const UsuarioSchema = mongoose.Schema({
 
       type: String
    },
-   
+
    prekinder: {
 
-      type:Boolean
+      type: Boolean
    },
-   
+
    kinder: {
 
       type: Boolean
@@ -167,12 +169,12 @@ const UsuarioSchema = mongoose.Schema({
 
       type: Boolean
    },
- 
+
    carpintero: {
 
       type: Boolean
    },
-  
+
    cerrajero: {
 
       type: Boolean
@@ -182,7 +184,7 @@ const UsuarioSchema = mongoose.Schema({
 
       type: Boolean
    },
-   
+
    servicioTecnico: {
 
       type: Boolean
@@ -194,7 +196,7 @@ const UsuarioSchema = mongoose.Schema({
 
       type: Boolean
    },
-  
+
    mecanico: {
 
       type: Boolean
@@ -230,12 +232,12 @@ const UsuarioSchema = mongoose.Schema({
 
       type: Boolean
    },
- 
+
    dentroCiudad: {
 
       type: Boolean
    },
-  
+
    otrasCiudades: {
 
       type: Boolean
@@ -264,7 +266,7 @@ const UsuarioSchema = mongoose.Schema({
       type: Boolean
    },
 });
-  
+
 
 /* UsuarioSchema.method('toJSON', function() {
     const { __v, _id, password, ...object } = this.toObject();
@@ -274,4 +276,4 @@ const UsuarioSchema = mongoose.Schema({
 
 
 
-module.exports = mongoose.model( 'Usuario', UsuarioSchema );
+module.exports = mongoose.model('Usuario', UsuarioSchema);

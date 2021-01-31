@@ -112,9 +112,11 @@ function obtenerMenu(ROLE) {
 
     if (ROLE === 'ADMIN_ROLE') {
         menu[0].submenu.unshift(  
-            { titulo : 'Solicitud de Pago', url: '/admininico' }, 
-     //   { titulo: 'Panel Principal', url: '/Inicio' },
-     //   { titulo : 'Crear usuarios', url: '/Registrar' },
+            { titulo : 'USUARIOS', url: '/dashboard/administrador' }, 
+            { titulo: 'CREAR CURSOS', url: '/dashboard/crearCurso' },
+            { titulo : 'VER CURSOS', url: '/dashboard/verCurso' },
+            { titulo: 'PERFILES PUBLICADOS ', url: '/dashboard/perfilesAdmin' },
+            { titulo : 'OFERTAS PUBLICADAS', url: '/dashboard/ofertasAdmin' },
      //   { titulo: 'Administrar usuarios', url: '/usuarios' },
      //   { titulo : 'Administrador de tareas', url: '/adminTareas' },
       
@@ -133,10 +135,7 @@ function obtenerMenu(ROLE) {
      //   { titulo : 'Crear usuarios', url: '/Registrar' },
      //   { titulo: 'Administrar usuarios', url: '/usuarios' },
      //   { titulo : 'Administrador de tareas', url: '/adminTareas' },
-      
-
-     
-    );
+      );
   
 
     }   
@@ -146,7 +145,9 @@ function obtenerMenu(ROLE) {
            
             { titulo : 'Formulario de Inscripción', url: '/dashboard/admininico' }, 
             { titulo: 'Editor de oferta de empleo', url: '/dashboard/verofertas' },
-            { titulo: 'Planes', url: '/dashboard/planes' }
+            { titulo: 'Planes', url: '/dashboard/planes' },
+            { titulo: 'Perfiles Empleados', url: '/dashboard/perfiles' },
+            { titulo: 'Cursos', url: '/dashboard/cursosEmpleadores' }
         );
       
     }
@@ -156,6 +157,8 @@ function obtenerMenu(ROLE) {
         { titulo : 'Hoja de Vida', url: '/dashboard/hojavida' }, 
         { titulo : 'Editar Hoja de vida', url: '/dashboard/verhoja' },
         { titulo : 'Mis Suscripciones', url: '/dashboard/planes/empleados' },
+        { titulo : 'Ofertas', url: '/dashboard/ofertasPublicadas' },
+        { titulo : 'Cursos', url: '/dashboard/cursosEmpleados' },
       //  { titulo : 'Actualizar Los requisitos/Descargar Certificado', url: '/historial' } 
         
         );

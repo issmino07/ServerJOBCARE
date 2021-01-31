@@ -116,6 +116,9 @@ MIT
 ngx-spinner
 MIT
 
+ngx-star-rating
+MIT
+
 rxjs
 Apache-2.0
                                Apache License
