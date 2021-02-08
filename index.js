@@ -45,7 +45,7 @@ app.use('/api/localidades', require('./routes/localidades'));
 app.use('/api/categorias', require('./routes/categoria'));
 app.use('/api/ofertas', require('./routes/ofertas'));
 app.use('/api/planes', require('./routes/planes'));
-
+app.use('/api/Contacto', require('./routes/contactoPostulante'));
 app.use('/api/postulacion', require('./routes/postulacion'));
 app.use('/api/cursos',Cursos);
 app.use('/api/planempleados', require('./routes/plnesEmpleados'));

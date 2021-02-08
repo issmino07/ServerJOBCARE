@@ -148,6 +148,7 @@ function obtenerMenu(ROLE) {
             { titulo: 'Postulaciones', url: '/dashboard/postulacionOfertas' },
             { titulo: 'Planes', url: '/dashboard/planes' },
             { titulo: 'Perfiles Empleados', url: '/dashboard/perfiles' },
+            { titulo: 'Perfiles Contactados', url: '/dashboard/postulantesContactados' },
             { titulo: 'Cursos', url: '/dashboard/cursosEmpleadores' }
         );
       
@@ -160,8 +161,9 @@ function obtenerMenu(ROLE) {
         { titulo : 'Mis Suscripciones', url: '/dashboard/planes/empleados' },
         { titulo : 'Ofertas', url: '/dashboard/ofertasPublicadas' },
         { titulo : 'Mis Postulaciones', url: '/dashboard/ofertasPostuladas' },
+        { titulo : 'Empleador solicitando', url: '/dashboard/teContactaron' },
         { titulo : 'Cursos', url: '/dashboard/cursosEmpleados' }
-       
+
       //  { titulo : 'Actualizar Los requisitos/Descargar Certificado', url: '/historial' } 
         
         );
@@ -176,6 +178,7 @@ function obtenerMenu(ROLE) {
         { titulo : 'Mis Suscripciones', url: '/dashboard/planes/empleados' },
         { titulo : 'Ofertas', url: '/dashboard/ofertasPublicadas' },
         { titulo : 'Mis Postulaciones', url: '/dashboard/ofertasPostuladas' },
+        { titulo : 'Empleador solicitando', url: '/dashboard/teContactaron' },
         { titulo : 'Cursos', url: '/dashboard/cursosEmpleados' },
       //  { titulo : 'Actualizar Los requisitos/Descargar Certificado', url: '/historial' } 
         
