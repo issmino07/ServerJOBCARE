@@ -6,6 +6,7 @@ const router = Router();
 
 //informe largo
 router.post('/',HojaVida.crearHoja);
+router.post('/insertar',HojaVida.postInsert);    
 router.get('/',HojaVida.getHojavida);
 router.get('/todos',HojaVida.getHoja);
 router.get('/:_id',HojaVida.getIdHoja);

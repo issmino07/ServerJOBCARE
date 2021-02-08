@@ -3,6 +3,8 @@ const mongoose = require('mongoose');
 
 
 
+
+
 const OfertasShema = mongoose.Schema({
 
 
@@ -23,6 +25,17 @@ const OfertasShema = mongoose.Schema({
      type: mongoose.Types.ObjectId, ref: 'Usuario'
     },
 
+
+   postulacion:[
+      {  user:{type:mongoose.Types.ObjectId, ref: 'Usuario',required: true, unique: true},
+         descripcion:{type:mongoose.Types.ObjectId, ref: 'hojavida'}  
+   
+   }
+   
+   ]
+
 });
 
-module.exports = mongoose.model('ofertas', OfertasShema);
+
+
+module.exports = mongoose.model('Ofertas', OfertasShema);

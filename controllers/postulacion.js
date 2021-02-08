@@ -1,19 +1,20 @@
 var express = require('express');
-const { populate } = require('../models/ofertas');
 
 
-const Ofertas = require('../models/ofertas');
+const Postulacion = require('../models/postulacion');
 
 var app = express();
 
 
 // POST CREAR CLIENTE
-const crearOferta = (req, res) => {
+const crearPostulacion = (req, res) => {
     // Crear un cliente
-    const ofertas = new Ofertas(req.body);
+ 
+   
+    const postular = new Postulacion(req.body);
 
     // GUARDAR UNA OPCION EN MongoDB
-    ofertas.save()
+   postular.save()
         .then(data => {
             res.json(data);
         }).catch(err => {
@@ -24,51 +25,11 @@ const crearOferta = (req, res) => {
 };
 
 
-const postInsert  = (req, res) => {
-  
-  
-  
-        if (req.body._id) {
-            Ofertas.updateOne({ _id: req.body._id }, {
-                
-                    $push: {
-                     'postulacion': {     
-                            user: req.body.user,
-                            descripcion: req.body.descripcion
-                        }
-                    }
-                },
-               (error) => {
-                    if (error) {
-                        return res.json({
-                            success: false,
-                            msj: 'No se pudo agregar el Postulacion',
-                            err
-                        });
-                    } else {
-                        return res.json({
-                            success: true,
-                            msj: 'Se agregó correctamente la Postulacion'
-                        });
-                    }
-                }
-            )
-        } else {
-            return res.json({
-                success: false,
-                msj: 'No se pudo agregar la postulacion, por favor verifique que el _id sea correcto'
-            });
-        }
-
-};
-
-
-
 // todos las opciones
-const getOfertas = (req, res) => {
-    Ofertas.find({estado: {$ne: 'NO PUBLICADO' }}).populate('usuario')
-        .then(oferta => {
-            res.json(oferta);
+const getPostulacion1 = (req, res) => {
+    Postulacion.find({estado: {$ne: 'NO PUBLICADO' }})
+        .then(postulacion => {
+            res.json(postulacion);
         }).catch(err => {
             res.status(500).send({
                 msg: err.message
@@ -77,15 +38,13 @@ const getOfertas = (req, res) => {
 };
 
 
-
-// todos las opciones
-const getOferta = (req, res) => {
-    Ofertas.find({
+const getOfertaPostulacion = (req, res) => {
+    Postulacion.find({
         
         usuario:req.query.usuario_id,
       
     
-    }).populate(' postulacion.user postulacion.descripcion usuario ')
+    }).populate('postulacion ofertante')
         .then(oferta => {
             res.status(201).json(oferta);
         }).catch(err => {
@@ -97,16 +56,29 @@ const getOferta = (req, res) => {
 };
 
 
+// todos las opciones
+const getPostulacion = (req, res) => {
+    Postulacion.find()
+        .then(postulacion => {
+            res.json(postulacion);
+        }).catch(err => {
+            res.status(500).send({
+                msg: err.message
+            });
+        });
+};
+
+
 //ENCUENTRE UNA OPCION
-const getIdOferta =  (req, res) => {
-    Ofertas.findById(req.params._id).populate('usuario')
-        .then(ofertas => {
-            if (!ofertas) {
+const getIdpostulacion =  (req, res) => {
+    Postulacion.findById(req.params._id)
+        .then(postular => {
+            if (!postular) {
                 return res.status(404).json({
                     msg: "Opciones not found with id " + req.params._id
                 });
             }
-            res.json(ofertas);
+            res.json(postular);
         }).catch(err => {
             if (err.kind === 'ObjectId') {
                 return res.status(404).json({
@@ -120,16 +92,16 @@ const getIdOferta =  (req, res) => {
 };
 
 // ACTUALIZAR OPCION
-const actualizarOferta =  (req, res) => {
+const actualizarPostulacion =  (req, res) => {
     //Encuentra un cliente y actualízalo
-    Ofertas.findByIdAndUpdate(req.body._id, req.body, { new: true })
-        .then(ofertas => {
-            if (!ofertas) {
+    Postulacion.findByIdAndUpdate(req.body._id, req.body, { new: true })
+        .then(postular => {
+            if (!postular) {
                 return res.status(404).json({
                     msg: "Opciones not found with id " + req.params._id
-                }); 
+                });
             }
-            res.json(ofertas);
+            res.json(postular);
         }).catch(err => {
             if (err.kind === 'ObjectId') {
                 return res.status(404).json({
@@ -148,10 +120,10 @@ const actualizarOferta =  (req, res) => {
 
 
 //ELIMINAR OPCION
-const eliminarOferta = (req, res) => {
-    Ofertas.findByIdAndDelete(req.params._id)
-        .then(ofertas => {
-            if (!ofertas) {
+const eliminarPostulacion = (req, res) => {
+    Postulacion.findByIdAndDelete(req.params._id)
+        .then(postular => {
+            if (!postular) {
                 return res.status(404).json({
                     msg: "Opciones not found with id " + req.params._id
                 });
@@ -171,14 +143,14 @@ const eliminarOferta = (req, res) => {
 
 
 module.exports = {
-  //  crearOfertaId,
-  postInsert,
-    crearOferta,
-    getOferta,
-    getIdOferta,
-    getOfertas,
-    actualizarOferta,
-    eliminarOferta,
+
+    crearPostulacion,
+    getPostulacion,
+    getIdpostulacion,
+    getOfertaPostulacion, 
+    actualizarPostulacion,
+    eliminarPostulacion
+   
    
  
 }

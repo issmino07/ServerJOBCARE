@@ -144,7 +144,8 @@ function obtenerMenu(ROLE) {
         menu[0].submenu.unshift(  
            
             { titulo : 'Formulario de Inscripción', url: '/dashboard/admininico' }, 
-            { titulo: 'Editor de oferta de empleo', url: '/dashboard/verofertas' },
+            { titulo: 'Ver ofertas publicadas', url: '/dashboard/verofertas' },
+            { titulo: 'Postulaciones', url: '/dashboard/postulacionOfertas' },
             { titulo: 'Planes', url: '/dashboard/planes' },
             { titulo: 'Perfiles Empleados', url: '/dashboard/perfiles' },
             { titulo: 'Cursos', url: '/dashboard/cursosEmpleadores' }
@@ -158,6 +159,23 @@ function obtenerMenu(ROLE) {
         { titulo : 'Editar Hoja de vida', url: '/dashboard/verhoja' },
         { titulo : 'Mis Suscripciones', url: '/dashboard/planes/empleados' },
         { titulo : 'Ofertas', url: '/dashboard/ofertasPublicadas' },
+        { titulo : 'Mis Postulaciones', url: '/dashboard/ofertasPostuladas' },
+        { titulo : 'Cursos', url: '/dashboard/cursosEmpleados' }
+       
+      //  { titulo : 'Actualizar Los requisitos/Descargar Certificado', url: '/historial' } 
+        
+        );
+      
+    }
+
+
+    if (ROLE === 'PROFESIONAL_ROLE') {
+        menu[0].submenu.unshift(  
+        { titulo : 'Hoja de Vida', url: '/dashboard/hojavidaprofesional' }, 
+        { titulo : 'Editar Hoja de vida', url: '/dashboard/verhoja' },
+        { titulo : 'Mis Suscripciones', url: '/dashboard/planes/empleados' },
+        { titulo : 'Ofertas', url: '/dashboard/ofertasPublicadas' },
+        { titulo : 'Mis Postulaciones', url: '/dashboard/ofertasPostuladas' },
         { titulo : 'Cursos', url: '/dashboard/cursosEmpleados' },
       //  { titulo : 'Actualizar Los requisitos/Descargar Certificado', url: '/historial' } 
         
@@ -165,7 +183,7 @@ function obtenerMenu(ROLE) {
       
     }
 
- 
+
 
     return menu;
 

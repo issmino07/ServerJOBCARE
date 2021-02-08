@@ -22,6 +22,44 @@ const crearHoja = (req, res) => {
         });
 };
 
+const postInsert  = (req, res) => {
+  
+  
+  
+    if (req.body._id) {
+        Hojavida.updateOne({ _id: req.body._id }, {
+            
+                $push: {
+                 'postulacion': {     
+                        user: req.body.user,
+                        //descripcion: req.body.descripcion
+                    }
+                }
+            },
+           (error) => {
+                if (error) {
+                    return res.json({
+                        success: false,
+                        msj: 'No se pudo agregar el Postulacion',
+                        err
+                    });
+                } else {
+                    return res.json({
+                        success: true,
+                        msj: 'Se agregó correctamente la Postulacion'
+                    });
+                }
+            }
+        )
+    } else {
+        return res.json({
+            success: false,
+            msj: 'No se pudo agregar la postulacion, por favor verifique que el _id sea correcto'
+        });
+    }
+
+};
+
 
 // todos las opciones
 const getHoja = (req, res) => {
@@ -40,6 +78,8 @@ const getHoja = (req, res) => {
 // todos las opciones
 const getHojavida = (req, res) => {
     Hojavida.find({usuario:req.query.usuario_id})
+
+    .populate(' postulacion.user ')
         .then(hoja => {
             res.json(hoja);
         }).catch(err => {
@@ -124,7 +164,7 @@ const eliminarHoja = (req, res) => {
 
 
 module.exports = {
-
+    postInsert,
     crearHoja,
     getHoja,
     getIdHoja,
