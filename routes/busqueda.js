@@ -1,10 +1,13 @@
+'use strict'
+
 var express = require('express');
 
 var app = express();
 
 
 var Usuario = require('../models/usuario');
-
+var Ofertas = require('../models/ofertas')
+var Hoja = require('../models/hojavida')
 // ==============================
 // Busqueda por colección
 // ==============================
@@ -22,6 +25,14 @@ app.get('/coleccion/:tabla/:busqueda', (req, res) => {
             promesa = buscarUsuarios(busqueda, regex);
             break;
 
+
+            case 'ofertas':
+                promesa = buscarOfertas(busqueda, regex);
+                break;
+    
+            case 'hojavida':
+                promesa = buscarHoja(busqueda, regex);
+                break;
       
 
       
@@ -37,7 +48,7 @@ app.get('/coleccion/:tabla/:busqueda', (req, res) => {
     }
 
     promesa.then(data => {
-
+          console.log(data)
         res.status(200).json({
             ok: true,
             [tabla]: data
@@ -54,14 +65,16 @@ app.get('/coleccion/:tabla/:busqueda', (req, res) => {
 app.get('/todo/:busqueda', (req, res, next) => {
 
     var busqueda = req.params.busqueda;
-    var regex = new RegExp(busqueda, 'i');
+
+    var regex = new RegExp(busqueda, 'i');   
 
 
     Promise.all([
           
            
             buscarUsuarios(busqueda, regex),
-          
+            buscarOfertas(busqueda, regex),
+            buscarHoja(busqueda, regex)
         ])
         .then(respuestas => {
 
@@ -70,7 +83,8 @@ app.get('/todo/:busqueda', (req, res, next) => {
               
              
                 usuarios: respuestas[1],
-               
+                ofertas: respuestas[1],
+                hojavida: respuestas[1]
             });
         })
 
@@ -100,17 +114,50 @@ function buscarUsuarios(busqueda, regex) {
 
 
     });
-} 
+}
+
+function buscarOfertas(busqueda, regex) {
+    console.log(busqueda)
+    return new Promise((resolve, reject) => {
+
+        Ofertas.find({}, 'tituloEmpleo horario categorias valor')
+            .or([{ 'tituloEmpleo': regex }, { 'horario': regex }, { 'categorias': regex }])
+            .exec((err, ofertas) => {
+
+                if (err) {
+                    reject('Error al cargar ofertas', err);
+                } else {
+                    resolve(ofertas);
+                }
 
 
+            })
 
 
+    });
+}
 
 
+function buscarHoja(busqueda, regex) {
+console.log(busqueda,'si funciona')
+    return new Promise((resolve, reject) => {
+
+        Hoja.find({}, 'nombre apellido descripcion').populate('usuario img')
+            .or([{ 'nombre': regex }, { 'apellido': regex }, { 'descripcion': regex }])
+            .exec((err, hojavida) => {
+
+                if (err) {
+                    reject('Erro al cargar perfil', err);
+                } else {
+                    resolve(hojavida);
+                }
 
 
+            })
 
 
+    });
+}
 
 
 

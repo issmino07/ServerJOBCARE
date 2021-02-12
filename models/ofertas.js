@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 
 
 
-
+'use strict'
 const OfertasShema = mongoose.Schema({
 
 
@@ -27,10 +27,12 @@ const OfertasShema = mongoose.Schema({
 
 
    postulacion:[
-      {  user:{type:mongoose.Types.ObjectId, ref: 'Usuario',required: true, unique: true},
+      { 
+         
+         user:{type:mongoose.Types.ObjectId, ref: 'Usuario' },
          descripcion:{type:mongoose.Types.ObjectId, ref: 'hojavida'}  
    
-   }
+      }
    
    ]
 

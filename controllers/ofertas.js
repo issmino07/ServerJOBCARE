@@ -1,5 +1,5 @@
 var express = require('express');
-const { populate } = require('../models/ofertas');
+
 
 
 const Ofertas = require('../models/ofertas');
@@ -24,11 +24,10 @@ const crearOferta = (req, res) => {
 };
 
 
+
+
 const postInsert  = (req, res) => {
-  
-  
-  
-        if (req.body._id) {
+  if (req.body._id) {
             Ofertas.updateOne({ _id: req.body._id }, {
                 
                     $push: {

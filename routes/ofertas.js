@@ -5,7 +5,7 @@ const ofertasEmpleo = require('../controllers/ofertas')
 const router = Router();
 
 //informe largo
-router.post('/',ofertasEmpleo.crearOferta);
+router.post('/crear',ofertasEmpleo.crearOferta);
 router.post('/insertar',ofertasEmpleo.postInsert);    
 router.get('/',ofertasEmpleo.getOferta);
 router.get('/todos',ofertasEmpleo.getOfertas);
