@@ -117,7 +117,7 @@ function buscarUsuarios(busqueda, regex) {
 }
 
 function buscarOfertas(busqueda, regex) {
-    console.log(busqueda)
+    //console.log(busqueda)
     return new Promise((resolve, reject) => {
 
         Ofertas.find({}, 'tituloEmpleo horario categorias valor')

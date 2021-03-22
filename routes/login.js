@@ -174,7 +174,7 @@ function obtenerMenu(ROLE) {
     if (ROLE === 'PROFESIONAL_ROLE') {
         menu[0].submenu.unshift(  
         { titulo : 'Hoja de Vida', url: '/dashboard/hojavidaprofesional' }, 
-        { titulo : 'Editar Hoja de vida', url: '/dashboard/verhoja' },
+        { titulo : 'Editar Hoja de vida', url: '/dashboard/verhojaProfesional' },
         { titulo : 'Mis Suscripciones', url: '/dashboard/planes/empleados' },
         { titulo : 'Ofertas', url: '/dashboard/ofertasPublicadas' },
         { titulo : 'Mis Postulaciones', url: '/dashboard/ofertasPostuladas' },
@@ -191,7 +191,7 @@ function obtenerMenu(ROLE) {
     return menu;
 
 } 
-
+  
    
      
 
