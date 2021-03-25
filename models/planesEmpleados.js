@@ -12,6 +12,13 @@ const PlanesEmpleadosShema = mongoose.Schema({
         type: mongoose.Types.ObjectId, ref: 'Usuario'
        },
 
+        //campos adicionales cuando el plan es pago=======
+        amount: String,
+        clientTransactionId:String,
+        optionalParameter1: String,
+        optionalParameter2: String,
+        reference: String,
+
 })
 
 module.exports = mongoose.model('PlanesEmpleados',PlanesEmpleadosShema);

@@ -40,6 +40,36 @@ const crearPlan = async (req, res) => {
 
 };
 
+const PlanesPagos = async (req, res) => {
+    try{
+        const {  tipoPlan} = req.body;
+        const existePlan = await Planes.findOne({ tipoPlan });
+        if ( existePlan ) {
+            return res.status(400).json({
+                ok: false,
+                msg:tipoPlan
+            });
+        
+           }
+        const planes = new Planes(req.body);
+    
+        // GUARDAR UNA OPCION EN MongoDB
+      await  planes.save()
+            .then(data => {
+                res.json(data);
+            }).catch(err => {
+                res.status(500).json({
+                    msg: err.message
+                });
+            });
+     }catch (error) {
+        console.log(error);
+        res.status(500).json({
+            ok: false,
+            msg: 'Error inesperado... revisar logs'
+        });
+    }
+}   
 // todos las opciones
 const getPlan = (req, res) => {
     Planes.find({usuario:req.query.usuario_id})
@@ -57,5 +87,6 @@ const getPlan = (req, res) => {
 
 module.exports = {
     crearPlan,
-    getPlan
+    getPlan,
+    PlanesPagos
 }

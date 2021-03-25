@@ -143,7 +143,7 @@ function obtenerMenu(ROLE) {
     if (ROLE === 'EMPLEADOR_ROLE') {
         menu[0].submenu.unshift(  
            
-            { titulo : 'Formulario de Inscripción', url: '/dashboard/admininico' }, 
+            { titulo : 'Publicar Oferta', url: '/dashboard/admininico' }, 
             { titulo: 'Ver ofertas publicadas', url: '/dashboard/verofertas' },
             { titulo: 'Postulaciones', url: '/dashboard/postulacionOfertas' },
             { titulo: 'Planes', url: '/dashboard/planes' },

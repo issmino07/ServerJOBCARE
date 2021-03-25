@@ -44,7 +44,7 @@ const getOfertaPostulacion = (req, res) => {
         usuario:req.query.usuario_id,
       
     
-    }).populate('postulacion ofertante')
+    }).populate('postulacion').populate(' ofertante')
         .then(oferta => {
             res.status(201).json(oferta);
         }).catch(err => {
