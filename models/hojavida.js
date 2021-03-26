@@ -53,7 +53,8 @@ const HojavidaShema = mongoose.Schema({
          //  descripcion:{type:mongoose.Types.ObjectId, ref: 'hojavida'}  
      
          } 
-        ]
+        ],
+        tipoplan:String
 
 });
 
