@@ -142,8 +142,8 @@ function buscarHoja(busqueda, regex) {
 console.log(busqueda,'si funciona')
     return new Promise((resolve, reject) => {
 
-        Hoja.find({}, 'nombre apellido descripcion').populate('usuario img')
-            .or([{ 'nombre': regex }, { 'apellido': regex }, { 'descripcion': regex }])
+        Hoja.find({}, 'nombre apellido descripcion categorias ').populate('usuario img')
+            .or([{ 'nombre': regex }, { 'apellido': regex }, { 'descripcion': regex }, { 'categorias': regex }])
             .exec((err, hojavida) => {
 
                 if (err) {

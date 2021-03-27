@@ -21,6 +21,7 @@ app.use(express.static(path.join(__dirname,'client')))
 app.use( express.json() );
 
 //verificacion de email 
+var senmail = require ('./routes/sedmail');
 var verificarRoutes = require('./controllers/verificarEmail');
 var loginRoutes = require('./routes/login');
 var imagenesRoutes = require('./routes/imagenes');
@@ -49,6 +50,7 @@ app.use('/api/planes', require('./routes/planes'));
 app.use('/api/Contacto', require('./routes/contactoPostulante'));
 app.use('/api/postulacion', require('./routes/postulacion'));
 app.use('/api/cursos',Cursos);
+app.use('/api/sendmail',senmail);
 app.use('/api/planempleados', require('./routes/plnesEmpleados'));
 app.use('/api/img',imagenesRoutes);
 app.listen( process.env.PORT, () => {
