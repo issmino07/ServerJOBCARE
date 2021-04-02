@@ -13,7 +13,7 @@ module.exports = {
     if (userEmail) {
       return res
         .status(409)
-        .json({ message: 'Email already exist' });
+        .json({ message: 'Ya existe el correo electrónico' });
     }
 
     const userName = await User.findOne({
@@ -22,14 +22,14 @@ module.exports = {
     if (userName) {
       return res
         .status(409)
-        .json({ message: 'Username already exist' });
+        .json({ message: 'El nombre de usuario ya existe' });
     }
 
     return bcrypt.hash(req.body.password, 10, (err, hash) => {
       if (err) {
         return res
           .status(400)
-          .json({ message: 'Error hashing password' });
+          .json({ message: 'Error al escribir la contraseña' });
       }
       const body = {
         username: req.body.username,
@@ -39,7 +39,7 @@ module.exports = {
       User.create(body)
         .then(user => {
           res
-          res.status(201) .json({ message: 'User created successfully', user });
+          res.status(201) .json({ message: 'Usuario creado con éxito', user });
         })
         .catch(() => {
           res
@@ -53,7 +53,7 @@ async ResetPassword(req, res) {
     if (!req.body.email) {
     return res
     .status(500)
-    .json({ message: 'Email is required' });
+    .json({ message: 'correo electronico es requerido' });
     }
     const user = await User.findOne({
     email:req.body.email
@@ -61,21 +61,21 @@ async ResetPassword(req, res) {
     if (!user) {
     return res
     .status(409)
-    .json({ message: 'Email does not exist' });
+    .json({ message: 'El correo electrónico no existe' });
     }
     var resettoken = new passwordResetToken({ _userId: user._id, resettoken: crypto.randomBytes(16).toString('hex') });
     resettoken.save(function (err) {
     if (err) { return res.status(500).send({ msg: err.message }); }
     passwordResetToken.find({ _userId: user._id, resettoken: { $ne: resettoken.resettoken } }).remove().exec();
-    res.status(200).json({ message: 'Reset Password successfully.' });
+    res.status(200).json({ message: 'Restablecer contraseña con éxito.' });
     var transporter = nodemailer.createTransport({
-    	host: "mail.jobandcare.com",
-	port: 587,
-	secure: false,
-	requireTLS: true,
-	auth: {
-		user: 'admin@jobandcare.com',
-		pass: 'C@po032786'
+      host: "smtp.gmail.com",
+      port: 587,
+      secure: false,
+      requireTLS: true,
+      auth: {
+        user: 'jobandcare@gmail.com',
+        pass: 'vjdabcdckoonqcmu'
 	},
 	tls: {
 		rejectUnauthorized: false  

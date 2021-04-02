@@ -135,7 +135,7 @@ function buscarOfertas(busqueda, regex) {
 
 
     });
-}
+}  
 
 
 function buscarHoja(busqueda, regex) {
