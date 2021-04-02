@@ -87,7 +87,7 @@ async ResetPassword(req, res) {
     subject: 'JOB & CARE Restablecer contraseña',
     text: 'Está recibiendo esto porque usted (u otra persona) ha solicitado restablecer la contraseña de su cuenta.\n\n '+ 
     'Haga clic en el siguiente enlace o péguelo en su navegador para completar el proceso:\n\n' +
-    'https://jobandcare.com/#/response-reset-password/' + resettoken.resettoken + '\n\n' +
+    'http://localhost:4200/#/response-reset-password/' + resettoken.resettoken + '\n\n' +
     'Si no solicitó esto, ignore este correo electrónico y su contraseña permanecerá sin cambios..\n'
     }
     transporter.sendMail(mailOptions, (err, info) => {
@@ -144,10 +144,10 @@ async ResetPassword(req, res) {
                         .status(400)
                         .json({ message: 'Password can not reset.' });
                     } else {
-                      userToken.remove();
+                      userToken.deleteOne();
                       return res
                         .status(201)
-                        .json({ message: 'Password reset successfully' });
+                        .json({ message: 'Restablecimiento de contraseña con éxito' });
                     }
         
                   });
