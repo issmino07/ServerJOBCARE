@@ -11,7 +11,6 @@ router.post('/pagos',Planes.PlanesPagos);
 router.get('/',Planes.getPlan);
 router.put('/',Planes.actualizarPlan);
 //router.delete('/:_id',ofertasEmpleo.eliminarOferta);
-//archivos
 
 
 
