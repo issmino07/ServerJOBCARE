@@ -9,7 +9,7 @@ router.post('/',Planes.crearPlan);
 router.post('/pagos',Planes.PlanesPagos);
 //router.get('/',ofertasEmpleo.getOferta);
 router.get('/',Planes.getPlan);
-//router.put('/',ofertasEmpleo.actualizarOferta);
+router.put('/',Planes.actualizarPlan);
 //router.delete('/:_id',ofertasEmpleo.eliminarOferta);
 //archivos
 

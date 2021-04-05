@@ -1,10 +1,10 @@
 var express = require('express');
 
 
-
+const Mensaje = require('../models/mensaje');
 const Ofertas = require('../models/ofertas');
 
-var app = express();
+
 
 
 // POST CREAR CLIENTE
@@ -41,7 +41,7 @@ const postInsert  = (req, res) => {
                     if (error) {
                         return res.json({
                             success: false,
-                            msj: 'No se pudo agregar el Postulacion',
+                            msj: 'No se pudo agregar la Postulacion',
                             err
                         });
                     } else {
@@ -168,6 +168,66 @@ const eliminarOferta = (req, res) => {
         });
 };
 
+//============================ofertas mensajes ===================================
+const registrarMensaje = async (req, res) => {
+    const mensajeData = req.body.mensaje;
+
+
+    const mensaje = new Mensaje({
+        usuario: mensajeData.usuario._id,
+        oferta: mensajeData.oferta._id,
+        mensaje: mensajeData.mensaje,
+        tipoUsuario: mensajeData.tipoUsuario,
+        fecha: new Date(),
+        estado: 'CREADO',
+    });
+    await mensaje.save();
+    const resultMensajesAdministrador = await Mensaje.find({
+        oferta: mensajeData.oferta._id,
+        tipoUsuario: 'ADMINISTRADOR'
+    });
+    if (resultMensajesAdministrador.length === 1) {
+        const oferta = await Ofertas.findOne({_id: mensajeData.oferta._id});
+        oferta.estado = 'EN_PROCESO_PRELIQUIDACION';
+        oferta.save();
+    }
+    const resultMensajes = await Mensaje.find({oferta: mensajeData.oferta._id});
+    res.status(201).json({
+        code: 'ui-2',
+        error: 'creado',
+        data: resultMensajes
+    });
+
+}
+const obtenerMensajes = async (req, res) => {
+    // try {
+    const idOferta = req.query.idOferta;
+    const oferta = await Ofertas.findOne({_id: idOferta});
+    if (idOferta == null || idOferta == '' || idOferta == 'null') {
+        res.status(404).json({
+            code: 'ui-6',
+            messageError: 'no existe la oferta',
+            data: null
+        });
+    } else {
+        const mensajes = await Mensaje.find({oferta: idOferta, estado: {$ne: 'ELIMINADO'}});
+        if (mensajes.length == 0) {
+            res.status(404).json({
+                code: 'ui-6',
+                message: '',
+                data: null
+            });
+        } else {
+            res.status(200).json({
+                code: 'ui-6',
+                messageError: '',
+                data: {'mensajes': mensajes}
+            });
+        }
+    }
+   
+}
+
 
 module.exports = {
   //  crearOfertaId,
@@ -179,5 +239,6 @@ module.exports = {
     actualizarOferta,
     eliminarOferta,
    
- 
+    registrarMensaje,
+    obtenerMensajes
 }

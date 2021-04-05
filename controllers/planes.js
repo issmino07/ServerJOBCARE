@@ -83,10 +83,34 @@ const getPlan = (req, res) => {
 };
 
 
+// ACTUALIZAR OPCION
+const actualizarPlan =  (req, res) => {
+    //Encuentra un cliente y actualízalo
+    Planes.findByIdAndUpdate(req.body._id, req.body, { new: true })
+        .then(plan => {
+            if (!plan) {
+                return res.status(404).json({
+                    msg: "Opciones not found with id " + req.params._id
+                });
+            }
+            res.json(plan);
+        }).catch(err => {
+            if (err.kind === 'ObjectId') {
+                return res.status(404).json({
+                    msg: "Opciones not found with id " + req.params._id
+                });
+            }
+            return res.status(500).json({
+                msg: "Error updating opciones with id " + req.params._id
+            });
+        });
+};
+
 
 
 module.exports = {
     crearPlan,
     getPlan,
-    PlanesPagos
+    PlanesPagos,
+    actualizarPlan
 }
