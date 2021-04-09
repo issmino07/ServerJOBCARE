@@ -15,10 +15,10 @@ const crearPlan = async (req, res) => {
     if ( existePlan ) {
         return res.status(400).json({
             ok: false,
-            msg: 'Ya esta suscrito a Plan Free'
+            msg: 'Ya esta suscrito a un plan'
         });
     
-       }
+       } 
     const planes = new Planes(req.body);
 
     // GUARDAR UNA OPCION EN MongoDB

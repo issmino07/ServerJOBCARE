@@ -73,6 +73,17 @@ const getHoja = (req, res) => {
         });
 };
 
+const getHojaPremium = (req, res) => {
+    Hojavida.find({estado: {$ne: 'NO PUBLICADO' },tipoPlan: {$ne: 'Free' }}).populate('usuario')
+        .then(hoja=> {
+            res.json(hoja);
+        }).catch(err => {
+            res.status(500).send({
+                msg: err.message
+            });
+        });
+};
+
 
 
 // todos las opciones
@@ -119,18 +130,18 @@ const actualizarHoja =  (req, res) => {
         .then(hoja => {
             if (!hoja) {
                 return res.status(404).json({
-                    msg: "Opciones not found with id " + req.params._id
+                    msg: "id indefinido " + req.params._id
                 });
             }
             res.json(hoja);
         }).catch(err => {
             if (err.kind === 'ObjectId') {
                 return res.status(404).json({
-                    msg: "Opciones not found with id " + req.params._id
+                    msg: "id indefinido " + req.params._id
                 });
             }
             return res.status(500).json({
-                msg: "Error updating opciones with id " + req.params._id
+                msg: "Error al actualizar las opciones con id" + req.params._id
             });
         });
 };
@@ -167,6 +178,7 @@ module.exports = {
     postInsert,
     crearHoja,
     getHoja,
+    getHojaPremium,
     getIdHoja,
     getHojavida,
     actualizarHoja,

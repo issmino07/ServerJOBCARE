@@ -74,6 +74,16 @@ const getOfertas = (req, res) => {
             });
         });
 };
+const getOfertasPremium = (req, res) => {
+    Ofertas.find({estado: {$ne: 'NO PUBLICADO' },tipoPlan: {$ne: 'Free' }}).populate('usuario')
+        .then(oferta => {
+            res.json(oferta);
+        }).catch(err => {
+            res.status(500).send({
+                msg: err.message
+            });
+        });
+};
 
 
 
@@ -240,5 +250,6 @@ module.exports = {
     eliminarOferta,
    
     registrarMensaje,
-    obtenerMensajes
+    obtenerMensajes,
+    getOfertasPremium
 }

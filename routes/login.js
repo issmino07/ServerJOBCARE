@@ -146,7 +146,7 @@ function obtenerMenu(ROLE) {
             { titulo : 'Publicar Oferta', url: '/dashboard/admininico' }, 
             { titulo: 'Ver ofertas publicadas', url: '/dashboard/verofertas' },
             { titulo: 'Postulaciones', url: '/dashboard/postulacionOfertas' },
-            { titulo: 'Planes', url: '/dashboard/planes' },
+            { titulo: 'Mis Suscripciones', url: '/dashboard/planes' },
             { titulo: 'Perfiles Empleados', url: '/dashboard/perfiles' },
             { titulo: 'Perfiles Contactados', url: '/dashboard/postulantesContactados' },
             { titulo: 'Cursos', url: '/dashboard/cursosEmpleadores' }
