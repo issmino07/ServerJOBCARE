@@ -54,7 +54,8 @@ const HojavidaShema = mongoose.Schema({
      
          } 
         ],
-        tipoplan:String
+        tipoplan:String,
+        urlPdf:String,
 
 });
 

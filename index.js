@@ -22,6 +22,7 @@ app.use( express.json() );
 
 //verificacion de email 
 var senmail = require ('./routes/sedmail');
+var userRoutesdocumentos = require ('./routes/user.route');
 var verificarRoutes = require('./controllers/verificarEmail');
 var loginRoutes = require('./routes/login');
 var imagenesRoutes = require('./routes/imagenes');
@@ -37,8 +38,10 @@ dbConnection();
 
 // Rutas
 app.use('/api', verificarRoutes);
+app.use('/api', userRoutesdocumentos)
 app.use('/api/login', loginRoutes);
 app.use('/api/busqueda', busquedaRoutes);
+
 app.use('/api/resetpassword', require('./routes/authRoutes'));
 app.use( '/api/usuarios', require('./routes/usuarios') );
 app.use( '/api/hojavida', require('./routes/hojavida') );
