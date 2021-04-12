@@ -30,7 +30,7 @@ app.post('/', (req, res) => {
 
     var body = req.body;
 
-    Usuario.findOne({ email: body.email }, (err, usuarioDB) => {
+    Usuario.findOne({ usuario: body.usuario }, (err, usuarioDB) => {
 
         if (err) {
             return res.status(500).json({
