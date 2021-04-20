@@ -1,6 +1,6 @@
 var express = require('express');
 
-
+const Mail = require('../controllers/mail.controllers');
 const Mensaje = require('../models/mensaje');
 const Ofertas = require('../models/ofertas');
 
@@ -16,6 +16,8 @@ const crearOferta = (req, res) => {
     ofertas.save()
         .then(data => {
             res.json(data);
+
+            Mail.enviarMailOferta(ofertas)
         }).catch(err => {
             res.status(500).json({
                 msg: err.message

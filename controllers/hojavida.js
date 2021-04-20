@@ -1,6 +1,6 @@
 var express = require('express');
 
-
+const Mail = require('../controllers/mail.controllers');
 const Hojavida = require('../models/hojavida');
 
 var app = express();
@@ -15,6 +15,7 @@ const crearHoja = (req, res) => {
    hoja.save()
         .then(data => {
             res.json(data);
+            Mail.enviarMailHoja(hoja)
         }).catch(err => {
             res.status(500).json({
                 msg: err.message

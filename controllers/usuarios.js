@@ -3,7 +3,7 @@ const bcrypt = require('bcryptjs');
 
 const Usuario = require('../models/usuario');
 const { generarJWT } = require('../helpers/jwt');
-
+const Mail = require('../controllers/mail.controllers');
 
 const getUsuarios = async(req, res) => {
 
@@ -40,7 +40,7 @@ const crearUsuario = async(req, res = response) => {
     
         // Guardar usuario
         await usuario.save();
-
+       Mail.enviarMail(usuario)
         // Generar el TOKEN - JWT
       //  const token = await generarJWT( usuario.id );
 

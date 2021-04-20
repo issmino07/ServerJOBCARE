@@ -18,7 +18,7 @@ const OfertasShema = mongoose.Schema({
  tipoPlan: String,
  categorias: String,
  provincia: {   type: String },
-
+ emailEmpleador:String,
  ciudad: { type: String },
  fechaReporte: { type: Date, required: true, default: Date.now },
  usuario: {

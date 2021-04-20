@@ -42,7 +42,7 @@ const HojavidaShema = mongoose.Schema({
     cargoRef3: String,
     empresaRef3:String,
     telefonoRef3:String,
- 
+    emailHoja:String,
      fechaReporte: { type: Date, required: true, default: Date.now },
      usuario: {
      type: mongoose.Types.ObjectId, ref: 'Usuario'

@@ -19,6 +19,9 @@ const PlanesEmpleadosShema = mongoose.Schema({
         optionalParameter2: String,
         reference: String,
 
+        fecha1:Date,
+        fecha2:String
+
 })
 
 module.exports = mongoose.model('PlanesEmpleados',PlanesEmpleadosShema);

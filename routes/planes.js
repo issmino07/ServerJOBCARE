@@ -6,7 +6,7 @@ const router = Router();
 
 //informe largo
 router.post('/',Planes.crearPlan);
-router.post('/pago',Planes.PlanesPagos);
+//router.post('/',Planes.PlanesPagos);
 //router.get('/',ofertasEmpleo.getOferta);
 router.get('/',Planes.getPlan);
 router.put('/',Planes.actualizarPlan);

@@ -7,21 +7,43 @@ var app = express();
 
 
 // POST CREAR CLIENTE
-const crearPostulacion = (req, res) => {
+const crearPostulacion = async  (req, res) => {
     // Crear un cliente
  
-   
+
+    try{
+
+        const {  postulacion} = req.body;
+        const existePlan = await Postulacion.findOne({ postulacion});
+        if ( existePlan ) {
+            return res.status(400).json({
+                ok: false,
+                msg: 'Ya esta Postulado a esta Oferta'
+            });
+        
+           } 
+
     const postular = new Postulacion(req.body);
 
-    // GUARDAR UNA OPCION EN MongoDB
-   postular.save()
-        .then(data => {
-            res.json(data);
-        }).catch(err => {
-            res.status(500).json({
-                msg: err.message
-            });
-        });
+           // GUARDAR UNA OPCION EN MongoDB
+      await  postular.save()
+               .then(data => {
+                   res.json(data);
+               }).catch(err => {
+                   res.status(500).json({
+                       msg: err.message
+                   });
+               });
+
+    }catch (error) {
+    console.log(error);
+    res.status(500).json({
+        ok: false,
+        msg: 'Error inesperado... revisar logs'
+    });
+}
+   
+
 };
 
 
