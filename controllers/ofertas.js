@@ -28,14 +28,23 @@ const crearOferta = (req, res) => {
 
 
 
-const postInsert  = (req, res) => {
+const postInsert  =  async (req, res) => {
   if (req.body._id) {
+
+ let userExist = await Ofertas.findOne({postulacion:{$elemMatch:{user:req.body.user}}});
+ if(userExist){
+    return res.json({
+        success: false,
+        msj: 'El usuario ya se ha postulado a la oferta'
+    });
+ }
             Ofertas.updateOne({ _id: req.body._id }, {
                 
-                    $push: {
+                $push: {
                      'postulacion': {     
                             user: req.body.user,
-                            descripcion: req.body.descripcion
+                            descripcion: req.body.descripcion,
+                            estatus: req.body.estatus
                         }
                     }
                 },
@@ -141,6 +150,7 @@ const actualizarOferta =  (req, res) => {
                 }); 
             }
             res.json(ofertas);
+            Mail.enviarMailPublica(ofertas)
         }).catch(err => {
             if (err.kind === 'ObjectId') {
                 return res.status(404).json({

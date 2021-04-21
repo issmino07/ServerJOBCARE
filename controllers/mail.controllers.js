@@ -145,5 +145,51 @@ async function sendMailHoja(user, callback) {
 }
 
 
+mailCTRL.enviarMailPublica = (user, res) => {
+    
+    sendMailPO(user, info => {
+        console.log('El correo se ha enviado 😃 ',info);
+
+    });
+};
+//la variable user puede ser cualquiera
+async function sendMailPO(user, callback) {
+    var maillist = [user.emailEmpleador, 'capo2786@gmail.com']
+    let transporter = nodemailer.createTransport(config.transporter);
+
+    let mailOptions = {
+        from: '"JOB & CARE" <admin@jobandcare.com>',
+        to: maillist,
+        subject: "OFERTA PUBLICADA",
+        html: ` 
+              
+              <table border="0" cellpadding="0" cellspacing="0" width="100px" background-color="#56c2c6" bgcolor="#56c2c6">
+              <tr height="100px">  
+                  <td bgcolor="" width="600px">
+                  <img src="http://144.91.108.162:4500/uploads/logoazul.jpg" width="280"  height="300">
+                  <br>
+      
+                      <h2 style="color: #fff; text-align:center">Job & Care</h2>
+                      <h2 style="color: #fff; text-align:center">TU OFERTA ESTA PUBLICADA</h2>
+                      <h3 style="color: #fff; text-align:left">&nbsp; Email: ${user.emailEmpleador}</h3>
+                      <h3 style="color: #fff; text-align:left">&nbsp; Empleo : ${user.tituloEmpleo}</h3>
+                      <h3 style="color: #fff; text-align:left">&nbsp; Estado : ${user.estado}</h3>
+                      <h3 style="color: #fff; text-align:left">&nbsp; Categoria : ${user.categorias}</h3>
+                  </td>
+              </tr>
+              <tr  bgcolor="#56c2c6">
+                  <td style="text-align:center">
+                      <p style="color: #000">¡Un mundo de servicios a su disposición!</p>
+                  </td>
+              </tr>
+              </table> `
+    };
+
+
+    let info = await transporter.sendMail(mailOptions);
+
+    callback(info);
+}
+
 
 module.exports = mailCTRL;

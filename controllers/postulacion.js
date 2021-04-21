@@ -18,7 +18,8 @@ const crearPostulacion = async  (req, res) => {
         if ( existePlan ) {
             return res.status(400).json({
                 ok: false,
-                msg: 'Ya esta Postulado a esta Oferta'
+                msg: 'Ya esta Postulado a esta Oferta',
+                msj:'POSTULADO'
             });
         
            } 

@@ -2,7 +2,7 @@ var express = require('express');
 
 
 const Planes = require('../models/planes');
-
+const Ofertas = require('../models/ofertas');
 var app = express();
 
 
@@ -25,6 +25,7 @@ const crearPlan = async (req, res) => {
   await  planes.save()
         .then(data => {
             res.json(data);
+            postInsert()
         }).catch(err => {
             res.status(500).json({
                 msg: err.message
@@ -47,7 +48,9 @@ const PlanesPagos = async (req, res) => {
         if ( existePlan ) {
             return res.status(400).json({
                 ok: false,
-                msg:tipoPlan
+                msg:tipoPlan,
+
+                
             });
         
            }

@@ -18,6 +18,8 @@ const PostulacionShema = mongoose.Schema({
         type: mongoose.Types.ObjectId, ref: 'Usuario'
        },
 
+       estado:String
+
 })
 
 module.exports = mongoose.model('Postulacion',PostulacionShema); 
