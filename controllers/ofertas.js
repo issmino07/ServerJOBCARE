@@ -30,7 +30,7 @@ const crearOferta = (req, res) => {
 
 const postInsert  =  async (req, res) => {
   if (req.body._id) {
-
+   
  let userExist = await Ofertas.findOne({postulacion:{$elemMatch:{user:req.body.user}}});
  if(userExist){
     return res.json({
@@ -47,6 +47,8 @@ const postInsert  =  async (req, res) => {
                             estatus: req.body.estatus
                         }
                     }
+
+                
                 },
                (error) => {
                     if (error) {
@@ -60,8 +62,12 @@ const postInsert  =  async (req, res) => {
                             success: true,
                             msj: 'Se agregó correctamente la Postulacion'
                         });
+
+                       
                     }
+                    
                 }
+                
             )
         } else {
             return res.json({
@@ -69,7 +75,8 @@ const postInsert  =  async (req, res) => {
                 msj: 'No se pudo agregar la postulacion, por favor verifique que el _id sea correcto'
             });
         }
-
+       
+ 
 };
 
 

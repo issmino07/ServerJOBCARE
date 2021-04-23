@@ -5,7 +5,7 @@ let express = require('express'),
   mdAutenticacion = require('../middlewares/autenticacion');
   var app = express();
 // Multer File upload settings
-const DIR = './public/';
+const DIR = './api/public/';
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
@@ -41,7 +41,7 @@ app.post('/create-user', upload.array('avatar', 6), (req, res, next) => {
   const url = req.protocol + '://' + req.get('host')
  // const url = req.protocol + 's://' + req.get('host')
   for (var i = 0; i < req.files.length; i++) {
-    reqFiles.push(url + '/public/' + req.files[i].filename)
+    reqFiles.push(url + '/api/public/' + req.files[i].filename)
   }
 
   const user = new User({

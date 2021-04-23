@@ -1,6 +1,6 @@
 var express = require('express');
 
-
+const Mail = require('../controllers/mail.controllers');
 const Postulacion = require('../models/postulacion');
 
 var app = express();
@@ -25,11 +25,13 @@ const crearPostulacion = async  (req, res) => {
            } 
 
     const postular = new Postulacion(req.body);
-
+   
            // GUARDAR UNA OPCION EN MongoDB
       await  postular.save()
                .then(data => {
                    res.json(data);
+              
+                   Mail.enviarMailPostulacion(postular) 
                }).catch(err => {
                    res.status(500).json({
                        msg: err.message

@@ -23,11 +23,19 @@ const crearHoja = (req, res) => {
         });
 };
 
-const postInsert  = (req, res) => {
+const postInsert  =async (req, res) => {
   
   
   
     if (req.body._id) {
+
+        let userExist = await Hojavida.findOne({postulacion:{$elemMatch:{user:req.body.user}}});
+        if(userExist){
+           return res.json({
+               success: false,
+               msj: 'El usuario ya se ha postulado a la oferta'
+           });
+        }
         Hojavida.updateOne({ _id: req.body._id }, {
             
                 $push: {
@@ -135,6 +143,7 @@ const actualizarHoja =  (req, res) => {
                 });
             }
             res.json(hoja);
+            Mail.enviarMailHojaPublica(hoja)
         }).catch(err => {
             if (err.kind === 'ObjectId') {
                 return res.status(404).json({
