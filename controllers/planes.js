@@ -85,6 +85,17 @@ const getPlan = (req, res) => {
         });
 };
 
+const getPlanes = (req, res) => {
+    Planes.find().populate('usuario')
+        .then(plan => {
+            res.json(plan);
+        }).catch(err => {
+            res.status(500).send({
+                msg: err.message
+            });
+        });
+};
+
 
 // ACTUALIZAR OPCION
 const actualizarPlan =  (req, res) => {
@@ -114,6 +125,7 @@ const actualizarPlan =  (req, res) => {
 module.exports = {
     crearPlan,
     getPlan,
+    getPlanes ,
     PlanesPagos,
     actualizarPlan
 }

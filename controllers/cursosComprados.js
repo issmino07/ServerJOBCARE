@@ -1,58 +1,36 @@
 var express = require('express');
 
-
 const Mail = require('../controllers/mail.controllers');
-const Postulacion = require('../models/contactoPostulante');
+const CursosComprados = require('../models/cursosComprados');
 
 var app = express();
 
 
 // POST CREAR CLIENTE
-const crearPostulacion =async (req, res) => {
+const crearCurso = (req, res) => {
     // Crear un cliente
-    try{
-        const {  usuario} = req.body;
-        const existePlan = await Postulacion.findOne({ usuario });
-        if ( existePlan ) {
-            return res.status(400).json({
-                ok: false,
-                msg: 'Ya contactaste este perfil'
-            });
-        
-           } 
-           const postular = new Postulacion(req.body);
-    
-        // GUARDAR UNA OPCION EN MongoDB
-      await postular.save()
-      .then(data => {
-          res.json(data);
-          Mail.enviarMailContacto(postular)
-      }).catch(err => {
-          res.status(500).json({
-              msg: err.message
-          });
-      });
-     }catch (error) {
-        console.log(error);
-        res.status(500).json({
-            ok: false,
-            msg: 'Error inesperado... revisar logs'
-        });
-    }
-    
-   
-
+    const curso = new CursosComprados(req.body);
 
     // GUARDAR UNA OPCION EN MongoDB
-
+   curso.save()
+        .then(data => {
+            Mail.enviarMailCursoAdmin(curso);
+            res.json(data);
+            Mail.enviarMailCurso(curso);
+            
+        }).catch(err => {
+            res.status(500).json({
+                msg: err.message
+            });
+        });
 };
 
 
 // todos las opciones
-const getPostulacion1 = (req, res) => {
-    Postulacion.find({estado: {$ne: 'NO PUBLICADO' }})
-        .then(postulacion => {
-            res.json(postulacion);
+const getCurso = (req, res) => {
+    CursosComprados.find({estado: {$ne: 'NO PUBLICADO' }})
+        .then(curso => {
+            res.json(curso);
         }).catch(err => {
             res.status(500).send({
                 msg: err.message
@@ -61,29 +39,25 @@ const getPostulacion1 = (req, res) => {
 };
 
 
-const getOfertaPostulacion = (req, res) => {
-    Postulacion.find({
-        
-        usuario:req.query.usuario_id,
-      
-    
-    }).populate('postulacion ').populate(' postulacion.usuario')
-        .then(oferta => {
-            res.status(201).json(oferta);
+const getCursosUsuario = (req, res) => {
+    CursosComprados.find({usuario:req.query.usuario_id})
+
+   
+        .then(curso => {
+            res.json(curso);
         }).catch(err => {
             res.status(500).send({
-                msg: err.message,
-
+                msg: err.message
             });
         });
 };
 
 
 // todos las opciones
-const getPostulacion = (req, res) => {
-    Postulacion.find()
-        .then(postulacion => {
-            res.json(postulacion);
+const getCursos = (req, res) => {
+    CursosComprados.find().populate('usuario')
+        .then(curso => {
+            res.json(curso);
         }).catch(err => {
             res.status(500).send({
                 msg: err.message
@@ -93,15 +67,15 @@ const getPostulacion = (req, res) => {
 
 
 //ENCUENTRE UNA OPCION
-const getIdpostulacion =  (req, res) => {
-    Postulacion.findById(req.params._id)
-        .then(postular => {
-            if (!postular) {
+const getIdCurso =  (req, res) => {
+    CursosComprados.findById(req.params._id)
+        .then(curso => {
+            if (!curso) {
                 return res.status(404).json({
                     msg: "Opciones not found with id " + req.params._id
                 });
             }
-            res.json(postular);
+            res.json(curso);
         }).catch(err => {
             if (err.kind === 'ObjectId') {
                 return res.status(404).json({
@@ -115,16 +89,16 @@ const getIdpostulacion =  (req, res) => {
 };
 
 // ACTUALIZAR OPCION
-const actualizarPostulacion =  (req, res) => {
+const actualizarCurso =  (req, res) => {
     //Encuentra un cliente y actualízalo
-    Postulacion.findByIdAndUpdate(req.body._id, req.body, { new: true })
-        .then(postular => {
-            if (!postular) {
+    CursosComprados.findByIdAndUpdate(req.body._id, req.body, { new: true })
+        .then(curso => {
+            if (!curso) {
                 return res.status(404).json({
                     msg: "Opciones not found with id " + req.params._id
                 });
             }
-            res.json(postular);
+            res.json(curso);
         }).catch(err => {
             if (err.kind === 'ObjectId') {
                 return res.status(404).json({
@@ -143,10 +117,10 @@ const actualizarPostulacion =  (req, res) => {
 
 
 //ELIMINAR OPCION
-const eliminarPostulacion = (req, res) => {
-    Postulacion.findByIdAndDelete(req.params._id)
-        .then(postular => {
-            if (!postular) {
+const eliminarCurso = (req, res) => {
+    CursosComprados.findByIdAndDelete(req.params._id)
+        .then(curso => {
+            if (!curso) {
                 return res.status(404).json({
                     msg: "Opciones not found with id " + req.params._id
                 });
@@ -167,13 +141,13 @@ const eliminarPostulacion = (req, res) => {
 
 module.exports = {
 
-    crearPostulacion,
-    getPostulacion,
-    getIdpostulacion,
-    getOfertaPostulacion, 
-    actualizarPostulacion,
-    eliminarPostulacion
-   
+    crearCurso,
+    getCurso,
+    getIdCurso,
+    getCursos,
+    getCursosUsuario,
+    actualizarCurso,
+    eliminarCurso,
    
  
 }

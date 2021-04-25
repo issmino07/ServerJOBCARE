@@ -112,11 +112,16 @@ function obtenerMenu(ROLE) {
 
     if (ROLE === 'ADMIN_ROLE') {
         menu[0].submenu.unshift(  
-            { titulo : 'USUARIOS', url: '/dashboard/administrador' }, 
-            { titulo: 'CREAR CURSOS', url: '/dashboard/crearCurso' },
-            { titulo : 'VER CURSOS', url: '/dashboard/verCurso' },
-            { titulo: 'PERFILES PUBLICADOS ', url: '/dashboard/perfilesAdmin' },
-            { titulo : 'OFERTAS PUBLICADAS', url: '/dashboard/ofertasAdmin' },
+            { titulo : 'Usuarios', url: '/dashboard/administrador' }, 
+            { titulo: 'Crear cursos', url: '/dashboard/crearCurso' },
+            { titulo : 'Ver cursos', url: '/dashboard/verCurso' },
+            { titulo : 'Cursos Comprados', url: '/dashboard/cursosCompradosT' },
+            { titulo: 'Perfiles publicados ', url: '/dashboard/perfilesAdmin' },
+            { titulo : 'Ofertas publicadas', url: '/dashboard/ofertasAdmin' },
+
+            { titulo : 'Empleadores Premium', url: '/dashboard/suscripcionesEmpleadores' },
+            { titulo : 'Empleados Premium', url: '/dashboard/suscripcionesEmpleados' },
+       
      //   { titulo: 'Administrar usuarios', url: '/usuarios' },
      //   { titulo : 'Administrador de tareas', url: '/adminTareas' },
       
@@ -149,7 +154,8 @@ function obtenerMenu(ROLE) {
             { titulo: 'Mis Suscripciones', url: '/dashboard/planes' },
             { titulo: 'Perfiles Empleados', url: '/dashboard/perfiles' },
             { titulo: 'Perfiles Contactados', url: '/dashboard/postulantesContactados' },
-            { titulo: 'Cursos', url: '/dashboard/cursosEmpleadores' }
+            { titulo: 'Cursos', url: '/dashboard/cursosEmpleadores' },
+            { titulo : 'Cursos Comprados', url: '/dashboard/cursosCompradosEmpleador' }
         );
       
     }
@@ -162,8 +168,8 @@ function obtenerMenu(ROLE) {
         { titulo : 'Ofertas', url: '/dashboard/ofertasPublicadas' },
         { titulo : 'Mis Postulaciones', url: '/dashboard/ofertasPostuladas' },
         { titulo : 'Empleador solicitando', url: '/dashboard/teContactaron' },
-        { titulo : 'Cursos', url: '/dashboard/cursosEmpleados' }
-
+        { titulo : 'Cursos', url: '/dashboard/cursosEmpleados' },
+        { titulo : 'Cursos Comprados', url: '/dashboard/cursosComprados' }
       //  { titulo : 'Actualizar Los requisitos/Descargar Certificado', url: '/historial' } 
         
         );

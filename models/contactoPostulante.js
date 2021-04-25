@@ -18,6 +18,11 @@ const ContactoShema = mongoose.Schema({
         type: mongoose.Types.ObjectId, ref: 'Usuario'
        },
 
+       emailPostulante:String,
+       nombre:String,
+       telefono:String,
+       emailEmpleador:String
+
 })
 
 module.exports = mongoose.model('Contacto',ContactoShema); 

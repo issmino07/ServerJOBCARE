@@ -52,6 +52,7 @@ app.use('/api/ofertas', require('./routes/ofertas'));
 app.use('/api/planes', require('./routes/planes'));
 app.use('/api/Contacto', require('./routes/contactoPostulante'));
 app.use('/api/postulacion', require('./routes/postulacion'));
+app.use('/api/cursosComprados', require('./routes/cursosComprados'))
 app.use('/api/cursos',Cursos);
 app.use('/api/sendmail',senmail);
 app.use('/api/planempleados', require('./routes/plnesEmpleados'));
