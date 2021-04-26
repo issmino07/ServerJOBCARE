@@ -18,8 +18,8 @@ const getUsuarios = async(req, res) => {
 
 const crearUsuario = async(req, res = response) => {
 
-    const { email, password } = req.body;
-    const { usuario } = req.body;
+    const { email,usuario, password } = req.body;
+   
     try {
         
         const existeEmail = await Usuario.findOne({ usuario});
@@ -28,7 +28,7 @@ const crearUsuario = async(req, res = response) => {
         if ( existeEmail|| existeEmail2 ) {
             return res.status(400).json({
                 ok: false,
-                msg: 'El usuario ya existe'
+                msg: 'El usuario o correo ya existe'
             });
         }
 
@@ -36,7 +36,7 @@ const crearUsuario = async(req, res = response) => {
     
         // Encriptar contraseña
         const salt = bcrypt.genSaltSync();
-        usuario.password = bcrypt.hashSync( password, salt );
+        user.password = bcrypt.hashSync( password, salt );
     
     
         // Guardar usuario

@@ -66,7 +66,7 @@ async ResetPassword(req, res) {
     var resettoken = new passwordResetToken({ _userId: user._id, resettoken: crypto.randomBytes(16).toString('hex') });
     resettoken.save(function (err) {
   //  if (err) { return res.status(500).send({ msg: err.message }); }
-    passwordResetToken.find({ _userId: user._id, resettoken: { $ne: resettoken.resettoken } }).remove().exec();
+    passwordResetToken.find({ _userId: user._id, resettoken: { $ne: resettoken.resettoken } }).deleteMany().exec();
     res.status(200).json({ message: 'Restablecer contraseña con éxito.' });
     var transporter = nodemailer.createTransport({
       host: "smtp.gmail.com",
