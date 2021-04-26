@@ -10,7 +10,7 @@ var rolesValidos = {
 
 const UsuarioSchema = mongoose.Schema({
 
-   usuario: { type: String },
+   usuario: { type: String, required: true, unique: true },
    email: { type: String, required: true, unique: true },
    password: { type: String, required: true, },
    img: { type: String },

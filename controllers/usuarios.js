@@ -7,7 +7,7 @@ const Mail = require('../controllers/mail.controllers');
 
 const getUsuarios = async(req, res) => {
 
-    const usuarios = await Usuario.find({}, ' email role img');
+    const usuarios = await Usuario.find({}, ' email role img usuario');
 
     res.json({
         ok: true,
@@ -19,19 +19,20 @@ const getUsuarios = async(req, res) => {
 const crearUsuario = async(req, res = response) => {
 
     const { email, password } = req.body;
-
+    const { usuario } = req.body;
     try {
+        
+        const existeEmail = await Usuario.findOne({ usuario});
+        const existeEmail2 = await Usuario.findOne({ email});
 
-        const existeEmail = await Usuario.findOne({ email});
-
-        if ( existeEmail ) {
+        if ( existeEmail|| existeEmail2 ) {
             return res.status(400).json({
                 ok: false,
-                msg: 'El usuario ya está registrado'
+                msg: 'El usuario ya existe'
             });
         }
 
-        const usuario = new Usuario( req.body );
+        const user= new Usuario( req.body );
     
         // Encriptar contraseña
         const salt = bcrypt.genSaltSync();
@@ -39,15 +40,15 @@ const crearUsuario = async(req, res = response) => {
     
     
         // Guardar usuario
-        await usuario.save();
-       Mail.enviarMail(usuario)
+        await user.save();
+       Mail.enviarMail(user)
         // Generar el TOKEN - JWT
       //  const token = await generarJWT( usuario.id );
 
 
         res.json({
             ok: true,
-            usuario,
+            user,
            // token
         });
 
