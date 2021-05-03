@@ -57,6 +57,11 @@ const HojavidaShema = mongoose.Schema({
         tipoplan:String,
         urlPdf:String,
 
+
+        cambioCiudad:String,
+        dispoViaje:String,
+        idioma:String,
+        nivelIdioma:String
 });
 
 module.exports = mongoose.model('hojavida', HojavidaShema);
