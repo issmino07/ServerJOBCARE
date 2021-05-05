@@ -29,7 +29,7 @@ const postInsert  =async (req, res) => {
   
     if (req.body._id) {
 
-        let userExist = await Hojavida.findOne({postulacion:{$elemMatch:{user:req.body.user}}});
+        let userExist = await Hojavida.findOne({_id: req.body._id,postulacion:{$elemMatch:{user:req.body.user}}});
         if(userExist){
            return res.json({
                success: false,

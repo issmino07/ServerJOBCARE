@@ -31,13 +31,13 @@ const crearOferta = (req, res) => {
 const postInsert  =  async (req, res) => {
   if (req.body._id) {
    
- let userExist = await Ofertas.findOne({postulacion:{$elemMatch:{user:req.body.user}}});
+let userExist = await Ofertas.findOne({_id: req.body._id,postulacion:{$elemMatch:{user:req.body.user}}});
  if(userExist){
     return res.json({
         success: false,
         msj: 'El usuario ya se ha postulado a la oferta'
     });
- }
+ }  
             Ofertas.updateOne({ _id: req.body._id }, {
                 
                 $push: {

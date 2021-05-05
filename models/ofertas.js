@@ -29,7 +29,7 @@ const OfertasShema = mongoose.Schema({
    postulacion:[
       { 
          
-         user:{type:mongoose.Types.ObjectId, ref: 'Usuario', unique: true  },
+         user:{type:mongoose.Types.ObjectId, ref: 'Usuario' },
          descripcion:{type:mongoose.Types.ObjectId, ref: 'hojavida'} , 
          estatus: String
       }
