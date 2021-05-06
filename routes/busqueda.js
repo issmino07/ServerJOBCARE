@@ -121,7 +121,7 @@ function buscarOfertas(busqueda, regex) {
     return new Promise((resolve, reject) => {
 
         Ofertas.find({}, 'tituloEmpleo horario categorias valor')
-            .or([{ 'tituloEmpleo': regex }, { 'horario': regex }, { 'categorias': regex }])
+            .or([{ 'tituloEmpleo': regex }, { 'horario': regex }, { 'categorias': regex }, { 'ciudad': regex }])
             .exec((err, ofertas) => {
 
                 if (err) {
@@ -143,7 +143,7 @@ console.log(busqueda,'si funciona')
     return new Promise((resolve, reject) => {
 
         Hoja.find({}, 'nombre apellido descripcion categorias ').populate('usuario img')
-            .or([{ 'nombre': regex }, { 'apellido': regex }, { 'descripcion': regex }, { 'categorias': regex }])
+            .or([{ 'nombre': regex }, { 'apellido': regex }, { 'descripcion': regex }, { 'categorias': regex }, { 'ciudad': regex }])
             .exec((err, hojavida) => {
 
                 if (err) {

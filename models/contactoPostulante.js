@@ -21,8 +21,8 @@ const ContactoShema = mongoose.Schema({
        emailPostulante:String,
        nombre:String,
        telefono:String,
-       emailEmpleador:String
-
+       emailEmpleador:String,
+       telefonoPostulante:String
 })
 
 module.exports = mongoose.model('Contacto',ContactoShema); 

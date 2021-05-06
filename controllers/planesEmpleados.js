@@ -30,7 +30,7 @@ const crearPlan = async (req, res) => {
                 msg: err.message
             });
         });
- }catch (error) {
+ } catch (error) {
     console.log(error);
     res.status(500).json({
         ok: false,
