@@ -83,7 +83,9 @@ let userExist = await Ofertas.findOne({_id: req.body._id,postulacion:{$elemMatch
 
 // todos las opciones
 const getOfertas = (req, res) => {
-    Ofertas.find({estado: {$ne: 'NO PUBLICADO' }}).populate('usuario')
+
+    const sort = { fechaReporte: -1 };
+    Ofertas.find({estado: {$ne: 'NO PUBLICADO' }}).sort(sort).populate('usuario')
         .then(oferta => {
             res.json(oferta);
         }).catch(err => {
@@ -93,7 +95,8 @@ const getOfertas = (req, res) => {
         });
 };
 const getOfertasPremium = (req, res) => {
-    Ofertas.find({estado: {$ne: 'NO PUBLICADO' },tipoPlan: {$ne: 'Free' }}).populate('usuario')
+    const sort = { fechaReporte: -1 };
+    Ofertas.find({estado: {$ne: 'NO PUBLICADO' },tipoPlan: {$ne: 'Free' }}).sort(sort).populate('usuario')
         .then(oferta => {
             res.json(oferta);
         }).catch(err => {
