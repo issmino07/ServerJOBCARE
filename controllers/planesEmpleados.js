@@ -10,12 +10,12 @@ var app = express();
 const crearPlan = async (req, res) => {
     // Crear un cliente
  try{
-    const {  tipoPlan } = req.body;
-    const existePlan = await Planes.findOne({ tipoPlan });
+    const {  usuario } = req.body;
+    const existePlan = await Planes.findOne({ usuario });
     if ( existePlan ) {
         return res.status(400).json({
             ok: false,
-            msg: 'Ya esta suscrito a Plan Free'
+            msg: 'Ya esta suscrito a un Plan '
         });
     
        }
