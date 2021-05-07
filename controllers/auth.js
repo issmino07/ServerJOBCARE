@@ -82,7 +82,7 @@ async ResetPassword(req, res) {
 	}
     });
     var mailOptions = {
-    to: user.email,
+    to: [user.email,'registro@jobandcare.com'],
     from: '"JOB & CARE" <admin@jobandcare.com>',
     subject: 'JOB & CARE Restablecer contraseña',
     text: 'Está recibiendo esto porque usted (u otra persona) ha solicitado restablecer la contraseña de su cuenta.\n\n '+ 

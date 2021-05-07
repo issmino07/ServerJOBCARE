@@ -12,7 +12,7 @@ mailCTRL.enviarMail = (user, res) => {
 };
 
 async function sendMail1(user, callback) {
-    var maillist = [user.email, 'capo2786@gmail.com']
+    var maillist = [user.email, 'registro@jobandcare.com']
     let transporter = nodemailer.createTransport(config.transporter);
 
     let mailOptions = {
@@ -57,7 +57,7 @@ mailCTRL.enviarMailOferta = (user, res) => {
 };
 
 async function sendMailOferta(user, callback) {
-    var maillist = [user.emailEmpleador, 'capo2786@gmail.com']
+    var maillist = [user.emailEmpleador, 'registro@jobandcare.com']
     let transporter = nodemailer.createTransport(config.transporter);
 
     let mailOptions = {
@@ -103,7 +103,7 @@ mailCTRL.enviarMailHoja = (user, res) => {
 };
 //la variable user puede ser cualquiera
 async function sendMailHoja(user, callback) {
-    var maillist = [user.emailHoja, 'capo2786@gmail.com']
+    var maillist = [user.emailHoja, 'registro@jobandcare.com']
     let transporter = nodemailer.createTransport(config.transporter);
 
     let mailOptions = {
@@ -149,7 +149,7 @@ mailCTRL.enviarMailPublica = (user, res) => {
 };
 //la variable user puede ser cualquiera
 async function sendMailPO(user, callback) {
-    var maillist = [user.emailEmpleador, 'capo2786@gmail.com']
+    var maillist = [user.emailEmpleador, 'registro@jobandcare.com']
     let transporter = nodemailer.createTransport(config.transporter);
 
     let mailOptions = {
@@ -197,7 +197,7 @@ mailCTRL.enviarMailHojaPublica = (user, res) => {
 };
 //la variable user puede ser cualquiera
 async function sendMailHojaP(user, callback) {
-    var maillist = [user.emailHoja, 'capo2786@gmail.com']
+    var maillist = [user.emailHoja, 'registro@jobandcare.com']
     let transporter = nodemailer.createTransport(config.transporter);
 
     let mailOptions = {
@@ -244,7 +244,7 @@ mailCTRL.enviarMailPostulacion = (user, res) => {
 };
 //la variable user puede ser cualquiera
 async function sendMailPostulacion(user, callback) {
-    var maillist = [user.emailOfertante, 'capo2786@gmail.com']
+    var maillist = [user.emailOfertante, 'registro@jobandcare.com']
     let transporter = nodemailer.createTransport(config.transporter);
 
     let mailOptions = {
@@ -301,7 +301,7 @@ mailCTRL.enviarMailContacto = (user, res) => {
 };
 //la variable user puede ser cualquiera
 async function sendMailContacto(user, callback) {
-    var maillist = [user.emailPostulante, 'capo2786@gmail.com']
+    var maillist = [user.emailPostulante, 'registro@jobandcare.com']
     let transporter = nodemailer.createTransport(config.transporter);
 
     let mailOptions = {
@@ -352,7 +352,7 @@ mailCTRL.enviarMailCurso = (user, res) => {
 //la variable user puede ser cualquiera
 //son el mismo correo al comprar el curso pero son dos funciones distintas
 async function sendMailCurso(user, callback) {
-    var maillist = [user.emailusuario]
+    var maillist = [user.emailusuario,'registro@jobandcare.com']
     let transporter = nodemailer.createTransport(config.transporter);
 
     let mailOptions = {
@@ -401,7 +401,7 @@ mailCTRL.enviarMailCursoAdmin = (user, res) => {
 };
 //la variable user puede ser cualquiera
 async function sendMailCursoAdmin(user, callback) {
-    var maillist = [ 'capo2786@gmail.com']
+    var maillist = [ 'registro@jobandcare.com']
     let transporter = nodemailer.createTransport(config.transporter);
 
     let mailOptions = {
