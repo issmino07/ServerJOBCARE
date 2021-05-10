@@ -17,6 +17,7 @@ const OfertasShema = mongoose.Schema({
  estado: String,
  tipoPlan: String,
  categorias: String,
+ telefonoEmpleador:String,
  provincia: {   type: String },
  emailEmpleador:String,
  ciudad: { type: String },

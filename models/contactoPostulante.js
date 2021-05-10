@@ -22,7 +22,14 @@ const ContactoShema = mongoose.Schema({
        nombre:String,
        telefono:String,
        emailEmpleador:String,
-       telefonoPostulante:String
+       telefonoPostulante:String,
+       nombrePostulante:String,
+    apellidoPostulante:String,
+    categoriaPostulante:String,
+    cedulaPostulante:String,
+    ciudadPostulante:String,
+    direccionPostulante:String,
+    urlPdf:String
 })
 
 module.exports = mongoose.model('Contacto',ContactoShema); 

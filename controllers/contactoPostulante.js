@@ -11,8 +11,8 @@ var app = express();
 const crearPostulacion =async (req, res) => {
     // Crear un cliente
     try{
-        const {  postulacion} = req.body;
-        const existePlan = await Postulacion.findOne({ postulacion });
+        const {  emailPostulante} = req.body;
+        const existePlan = await Postulacion.findOne({ emailPostulante });
         if ( existePlan ) {
             return res.status(400).json({
                 ok: false,

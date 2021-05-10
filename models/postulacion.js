@@ -22,7 +22,15 @@ const PostulacionShema = mongoose.Schema({
        emailOfertante:String,
        urlPdf:String,
        telefono: String,
-       nombre:String
+       nombre:String,
+
+       tituloEmpleo:String,
+       remuneracion:String,
+       salario:String,
+       telefonoEmpleador:String,
+       horario:String,
+       categoria:String,
+       ciudad:String  
 })
 
 module.exports = mongoose.model('Postulacion',PostulacionShema); 

@@ -74,7 +74,10 @@ app.get('/todo/:busqueda', (req, res, next) => {
            
             buscarUsuarios(busqueda, regex),
             buscarOfertas(busqueda, regex),
-            buscarHoja(busqueda, regex)
+            buscarHoja(busqueda, regex),
+
+            buscarOfertasPremium(busqueda, regex),
+            buscarHojaPremium(busqueda, regex)
         ])
         .then(respuestas => {
 
@@ -120,7 +123,28 @@ function buscarOfertas(busqueda, regex) {
     //console.log(busqueda)
     return new Promise((resolve, reject) => {
 
-        Ofertas.find({}, 'tituloEmpleo horario categorias valor ciudad')
+        Ofertas.find({}, 'tituloEmpleo horario categorias valor ciudad fechaReporte')
+            .or([{ 'tituloEmpleo': regex }, { 'horario': regex }, { 'categorias': regex }, { 'ciudad': regex }])
+            .exec((err, ofertas) => {
+
+                if (err) {
+                    reject('Error al cargar ofertas', err);
+                } else {
+                    resolve(ofertas);
+                }
+
+
+            })
+
+
+    });
+}  
+
+function buscarOfertasPremium(busqueda, regex) {
+    //console.log(busqueda)
+    return new Promise((resolve, reject) => {
+
+        Ofertas.find({tipoPlan: {$ne: 'Free' }}, 'tituloEmpleo horario categorias valor ciudad')
             .or([{ 'tituloEmpleo': regex }, { 'horario': regex }, { 'categorias': regex }, { 'ciudad': regex }])
             .exec((err, ofertas) => {
 
@@ -158,6 +182,27 @@ console.log(busqueda,'si funciona')
 
     });
 }
+
+function buscarHojaPremium(busqueda, regex) {
+    console.log(busqueda,'si funciona')
+        return new Promise((resolve, reject) => {
+    
+            Hoja.find({tipoPlan: {$ne: 'Free' }}, 'nombre apellido descripcion categorias ciudad telefonohoja ocupacion').populate('usuario img')
+                .or([{ 'nombre': regex }, { 'apellido': regex }, { 'descripcion': regex }, { 'categorias': regex }, { 'ciudad': regex }])
+                .exec((err, hojavida) => {
+    
+                    if (err) {
+                        reject('Erro al cargar perfil', err);
+                    } else {
+                        resolve(hojavida);
+                    }
+    
+    
+                })
+    
+    
+        });
+    }
 
 
 
