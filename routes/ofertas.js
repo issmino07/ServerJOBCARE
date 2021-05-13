@@ -13,6 +13,8 @@ router.get('/todos',ofertasEmpleo.getOfertas);
 router.get('/premium',ofertasEmpleo.getOfertasPremium);
 router.get('/:_id',ofertasEmpleo.getIdOferta);
 router.put('/',ofertasEmpleo.actualizarOferta);
+
+router.put('/:_id',ofertasEmpleo.actualizarOferta);
 router.delete('/:_id',ofertasEmpleo.eliminarOferta);
 //archivos
 router.post('/enviar/mensajes', ofertasEmpleo.registrarMensaje);

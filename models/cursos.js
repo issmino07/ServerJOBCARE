@@ -10,7 +10,7 @@ const CursosShema = mongoose.Schema({
     valor:String,
     categorias: String,
     descripcionCurso: String,
-
+    urlPdf:String,
     estado: String,
      fechaReporte: { type: Date, required: true, default: Date.now },
  

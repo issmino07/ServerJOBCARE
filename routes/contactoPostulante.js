@@ -9,7 +9,7 @@ router.post('/',Postulando.crearPostulacion);
 router.get('/',Postulando.getOfertaPostulacion);
 router.get('/',Postulando.getPostulacion);
 //router.put('/',ofertasEmpleo.actualizarOferta);
-//router.delete('/:_id',ofertasEmpleo.eliminarOferta);
+router.delete('/:_id',Postulando.eliminarPostulacion);
 //archivos
 
 
