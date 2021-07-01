@@ -123,7 +123,7 @@ function buscarOfertas(busqueda, regex) {
     //console.log(busqueda)
     return new Promise((resolve, reject) => {
 
-        Ofertas.find({}, 'tituloEmpleo horario categorias valor ciudad fechaReporte')
+        Ofertas.find({}, 'tituloEmpleo horario categorias valor ciudad fechaReporte remuneracion')
             .or([{ 'tituloEmpleo': regex }, { 'horario': regex }, { 'categorias': regex }, { 'ciudad': regex }])
             .exec((err, ofertas) => {
 

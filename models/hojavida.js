@@ -62,7 +62,8 @@ const HojavidaShema = mongoose.Schema({
         cambioCiudad:String,
         dispoViaje:String,
         idioma:String,
-        nivelIdioma:String
+        nivelIdioma:String,
+        estatus: String
 });
 
 module.exports = mongoose.model('hojavida', HojavidaShema);

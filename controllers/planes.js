@@ -10,8 +10,8 @@ var app = express();
 const crearPlan = async (req, res) => {
     // Crear un cliente
  try{
-    const {  usuario} = req.body;
-    const existePlan = await Planes.findOne({ usuario });
+    const {  email} = req.body;
+    const existePlan = await Planes.findOne({ email });
     if ( existePlan ) {
         return res.status(400).json({
             ok: false,

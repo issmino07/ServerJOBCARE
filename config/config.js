@@ -3,18 +3,18 @@ module.exports = {
     SEED: 'este-es-un-seed-dificil',
     
     email: "jobandcare@gmail.com",
-    password: "vjdabcdckoonqcmu",
+    password: "capo2786",
     transporter: {
         host: "smtp.gmail.com",
-        port: 587,
-        secure: false,
-        requireTLS: true,
+        port: 465,
+        secure: true,
+      //  requireTLS: true,
         auth: {
             user: 'jobandcare@gmail.com',
-            pass: 'vjdabcdckoonqcmu'
+            pass: 'capo2786'  
         },
-        tls: {
-            rejectUnauthorized: false
-        }
+       tls: {
+            rejectUnauthorized: true
+        } 
     }   
 }

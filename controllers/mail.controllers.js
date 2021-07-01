@@ -1,3 +1,5 @@
+'use strict'
+
 const nodemailer = require("nodemailer");
 const config = require("../config/config");
 
@@ -42,7 +44,7 @@ async function sendMail1(user, callback) {
     };
 
 
-    let info = await transporter.sendMail(mailOptions);
+    let info =  transporter.sendMail(mailOptions);
 
     callback(info);
 }

@@ -1,7 +1,7 @@
 var express = require('express');
 
 
-const Categorias = require('../models/categorias');
+const Categorias = require('../models/categorias'); 
 
 var app = express();
 

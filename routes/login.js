@@ -30,7 +30,7 @@ app.post('/', (req, res) => {
 
     var body = req.body;
 
-    Usuario.findOne({ usuario: body.usuario }, (err, usuarioDB) => {
+    Usuario.findOne({email: body.email}, (err, usuarioDB) => {
 
         if (err) {
             return res.status(500).json({
@@ -165,7 +165,7 @@ function obtenerMenu(ROLE) {
         { titulo : 'Hoja de Vida', url: '/dashboard/hojavida' }, 
         { titulo : 'Editar Hoja de vida', url: '/dashboard/verhoja' },
         { titulo : 'Mis Suscripciones', url: '/dashboard/planes/empleados' },
-        { titulo : 'Ofertas', url: '/dashboard/ofertasPublicadas' },
+        { titulo : 'Aplicar a una oferta', url: '/dashboard/ofertasPublicadas' },
         { titulo : 'Mis Postulaciones', url: '/dashboard/ofertasPostuladas' },
         { titulo : 'Empleador solicitando', url: '/dashboard/teContactaron' },
         { titulo : 'Cursos', url: '/dashboard/cursosEmpleados' },
@@ -187,6 +187,16 @@ function obtenerMenu(ROLE) {
         { titulo : 'Empleador solicitando', url: '/dashboard/teContactaron' },
         { titulo : 'Cursos', url: '/dashboard/cursosEmpleados' },
       //  { titulo : 'Actualizar Los requisitos/Descargar Certificado', url: '/historial' } 
+        
+        );
+      
+    }
+
+    
+    if (ROLE === 'CAPACITATE_ROLE') {
+        menu[0].submenu.unshift(  
+            { titulo : 'Cursos', url: '/dashboard/cursosCompra' }, 
+            { titulo : 'Cursos comprados', url: '/dashboard/cursosComprad' }, 
         
         );
       

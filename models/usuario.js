@@ -3,14 +3,14 @@ const mongoose = require('mongoose');
 
 
 var rolesValidos = {
-   values: ['ADMIN_ROLE', 'USER_ROLE', 'EMPLEADOR_ROLE', 'EMPLEADO_ROLE', 'PROFESIONAL_ROLE', 'INACTIVO'],
+   values: ['ADMIN_ROLE', 'USER_ROLE', 'EMPLEADOR_ROLE', 'EMPLEADO_ROLE', 'PROFESIONAL_ROLE', 'INACTIVO', 'CAPACITATE_ROLE'],
    message: '{VALUE} no es un rol permitido'
 };
 
 
 const UsuarioSchema = mongoose.Schema({
 
-   usuario: { type: String, required: true, unique: true },
+   usuario: { type: String },
    email: { type: String, required: true, unique: true },
    password: { type: String, required: true, },
    img: { type: String },

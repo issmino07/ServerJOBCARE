@@ -32,6 +32,7 @@ const crearPostulacion = async  (req, res) => {
                    res.json(data);
               
                    Mail.enviarMailPostulacion(postular) 
+                
                }).catch(err => {
                    res.status(500).json({
                        msg: err.message

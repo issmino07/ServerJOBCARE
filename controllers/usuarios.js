@@ -18,14 +18,14 @@ const getUsuarios = async(req, res) => {
 
 const crearUsuario = async(req, res = response) => {
 
-    const { email,usuario, password } = req.body;
+    const { email, password } = req.body;
    
     try {
         
-        const existeEmail = await Usuario.findOne({ usuario});
-        const existeEmail2 = await Usuario.findOne({ email});
+        const existeEmail = await Usuario.findOne({email});
+    
 
-        if ( existeEmail|| existeEmail2 ) {
+        if ( existeEmail ) {
             return res.status(400).json({
                 ok: false,
                 msg: 'El usuario o correo ya existe'
@@ -178,7 +178,7 @@ const actualizarUser = async (req, res) => {
         }
 
 
-        usuario.usuario = body.usuario;
+        // usuario.usuario = body.usuario;
         usuario.email = body.email;
         usuario.role = body.role;
         usuario.img = body.img;
