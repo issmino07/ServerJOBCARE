@@ -28,6 +28,7 @@ var loginRoutes = require('./routes/login');
 var imagenesRoutes = require('./routes/imagenes');
 var uploadRoutes = require('./routes/upload');
 var busquedaRoutes = require('./routes/busqueda');
+
 var Cursos = require('./routes/cursos');
 var serveIndex = require('serve-index');
 app.use(express.static(__dirname + '/'))
@@ -56,6 +57,7 @@ app.use('/api/cursosComprados', require('./routes/cursosComprados'))
 app.use('/api/cursos',Cursos);
 app.use('/api/sendmail',senmail);
 app.use('/api/planempleados', require('./routes/plnesEmpleados'));
+app.use('/api/notification', require('./routes/notification') );
 app.use('/api/img',imagenesRoutes);
 app.listen( process.env.PORT, () => {
     console.log(chalk.bgYellow.black.bold('Servidor funcionando en el puerto :' + process.env.PORT));

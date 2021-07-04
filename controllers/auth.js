@@ -70,12 +70,13 @@ async ResetPassword(req, res) {
     res.status(200).json({ message: 'Restablecer contraseña con éxito.' });
     var transporter = nodemailer.createTransport({
       host: "smtp.gmail.com",
-      port: 587,
-      secure: false,
-      requireTLS: true,
+      port: 465,
+      secure: true,
+    //  requireTLS: true,
       auth: {
-        user: 'jobandcare@gmail.com',
-        pass: 'vjdabcdckoonqcmu'
+          user: 'jobandcare@gmail.com',
+          pass: 'capo2786'  
+      
 	},
 	tls: {
 		rejectUnauthorized: false  
