@@ -42,9 +42,9 @@ app.use('/api', verificarRoutes);
 app.use('/api', userRoutesdocumentos)
 app.use('/api/login', loginRoutes);
 app.use('/api/busqueda', busquedaRoutes);  
-
-app.use('/api/resetpassword', require('./routes/authRoutes'));
 app.use( '/api/usuarios', require('./routes/usuarios') );
+app.use('/api/resetpassword', require('./routes/authRoutes'));
+
 app.use( '/api/hojavida', require('./routes/hojavida') );
 app.use('/api/upload',uploadRoutes); 
 app.use('/api/localidades', require('./routes/localidades'));

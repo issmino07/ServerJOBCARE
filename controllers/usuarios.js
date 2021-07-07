@@ -3,11 +3,11 @@ const bcrypt = require('bcryptjs');
 
 const Usuario = require('../models/usuario');
 const { generarJWT } = require('../helpers/jwt');
-const Mail = require('../controllers/mail.controllers');
+
 
 const getUsuarios = async(req, res) => {
 
-    const usuarios = await Usuario.find({}, ' email role img usuario');
+    const usuarios = await Usuario.find({}, ' email role img');
 
     res.json({
         ok: true,
@@ -19,36 +19,35 @@ const getUsuarios = async(req, res) => {
 const crearUsuario = async(req, res = response) => {
 
     const { email, password } = req.body;
-   
+
     try {
-        
-        const existeEmail = await Usuario.findOne({email});
-    
+
+        const existeEmail = await Usuario.findOne({ email });
 
         if ( existeEmail ) {
             return res.status(400).json({
                 ok: false,
-                msg: 'El usuario o correo ya existe'
+                msg: 'El correo ya está registrado'
             });
         }
 
-        const user= new Usuario( req.body );
+        const usuario = new Usuario( req.body );
     
         // Encriptar contraseña
         const salt = bcrypt.genSaltSync();
-        user.password = bcrypt.hashSync( password, salt );
+        usuario.password = bcrypt.hashSync( password, salt );
     
     
         // Guardar usuario
-        await user.save();
-       Mail.enviarMail(user)
+        await usuario.save();
+
         // Generar el TOKEN - JWT
       //  const token = await generarJWT( usuario.id );
 
 
         res.json({
             ok: true,
-            user,
+            usuario,
            // token
         });
 
@@ -57,7 +56,7 @@ const crearUsuario = async(req, res = response) => {
         console.log(error);
         res.status(500).json({
             ok: false,
-            msg: 'Error inesperado... revisar logs'
+            msg: 'Error inesperado usuario no guardado'
         });
     }
 
@@ -178,7 +177,7 @@ const actualizarUser = async (req, res) => {
         }
 
 
-        // usuario.usuario = body.usuario;
+        usuario.usuario = body.usuario;
         usuario.email = body.email;
         usuario.role = body.role;
         usuario.img = body.img;
