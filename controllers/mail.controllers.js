@@ -30,7 +30,7 @@ async function sendMail1(user, callback) {
                   <br>
       
                       <h2 style="color: #fff; text-align:center">Bienvenido a Job & Care</h2>
-                      <h3 style="color: #fff; text-align:left">&nbsp; Usuario: ${user.usuario}</h3>
+                  
                       <h3 style="color: #fff; text-align:left">&nbsp; Correo  : ${user.email}</h3>
                       <h3 style="color: #fff; text-align:left">&nbsp; Rol    : ${user.role}</h3>
                   </td>
@@ -354,7 +354,7 @@ mailCTRL.enviarMailCurso = (user, res) => {
 //la variable user puede ser cualquiera
 //son el mismo correo al comprar el curso pero son dos funciones distintas
 async function sendMailCurso(user, callback) {
-    var maillist = [user.emailusuario,'registro@jobandcare.com']
+    var maillist = [user.email,'registro@jobandcare.com']
     let transporter = nodemailer.createTransport(config.transporter);
 
     let mailOptions = {
@@ -422,7 +422,7 @@ async function sendMailCursoAdmin(user, callback) {
                       <h2 style="color: #fff; text-align:center">CURSO COMPRADO</h2>
                       <h3 style="color: #fff; text-align:left">&nbsp; Titulo : ${user.tituloCurso}</h3>
                       <h3 style="color: #fff; text-align:left">&nbsp; Categoria: ${user.categorias}</h3>
-                      <h3 style="color: #fff; text-align:left">&nbsp; Correo : ${user.emailusuario}</h3>
+                      <h3 style="color: #fff; text-align:left">&nbsp; Correo : ${user.email}</h3>
                       <h3 style="color: #fff; text-align:left">&nbsp; Categoria: ${user.telefono}</h3>
                       <h3 style="color: #fff; text-align:left">&nbsp; Pudes llamar o enviar correo 📱📨</h3>
                     
