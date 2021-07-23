@@ -40,7 +40,7 @@ async function sendMail(user, callback) {
     subject: "Te contactaron en tu pagina Web de Jobandcare",
     html: ` <h1>Formulario de Contacto</h1>
               <p>-----------------------------</p>
-              <p><b>Usuario:</b> ${user.name}</p>
+          
               <p><b>Email:</b> ${user.email}</p>
               <p><b>Asunto:</b> ${user.asunto}</p>
               <p><b>Mensaje</b> ${user.mensaje}</p>
