@@ -81,8 +81,8 @@ function obtenerMenu(ROLE) {
 
    var menu = [
         {
-         titulo: 'Principal',
-         icono: 'mdi mdi-gauge',
+        /*  titulo: 'Principal',
+         icono: 'mdi mdi-gauge', */
          submenu: [ ],
          },
 

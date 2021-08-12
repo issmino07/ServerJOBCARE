@@ -58,6 +58,7 @@ app.use('/api/cursos',Cursos);
 app.use('/api/sendmail',senmail);
 app.use('/api/planempleados', require('./routes/plnesEmpleados'));
 app.use('/api/notification', require('./routes/notification') );
+app.use('/api/calificacion', require('./routes/calificacion') );
 app.use('/api/img',imagenesRoutes);
 app.listen( process.env.PORT, () => {
     console.log(chalk.bgYellow.black.bold('Servidor funcionando en el puerto :' + process.env.PORT));

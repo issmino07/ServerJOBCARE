@@ -22,7 +22,7 @@ const HojavidaShema = mongoose.Schema({
     experiencia:String,
     descripcionExperiencia: String,
     nivelEducacion: String,
-    rating: Number,
+    rating: String,
     estado: String,
     check: Boolean,
     img2: String,
@@ -63,7 +63,8 @@ const HojavidaShema = mongoose.Schema({
         dispoViaje:String,
         idioma:String,
         nivelIdioma:String,
-        estatus: String
+        estatus: String,
+        comentario: String
 });
 
 module.exports = mongoose.model('hojavida', HojavidaShema);

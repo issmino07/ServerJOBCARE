@@ -26,7 +26,7 @@ async function sendMail1(user, callback) {
               <table border="0" cellpadding="0" cellspacing="0" width="100px" background-color="#56c2c6" bgcolor="#56c2c6" align="center">
               <tr height="100px">  
                   <td bgcolor="" width="600px">
-                  <img src="https://softlutions.ec/api/public/unnamed.jpg" width="280"  height="300">
+                  <img src="https://softlutions.ec/api/public/logoazul.jpg" width="280"  height="300">
                   <br>
       
                       <h2 style="color: #fff; text-align:center">Bienvenido a Job & Care</h2>
@@ -71,7 +71,7 @@ async function sendMailOferta(user, callback) {
               <table border="0" cellpadding="0" cellspacing="0" width="100px" background-color="#56c2c6" bgcolor="#56c2c6" align="center">
               <tr height="100px">  
                   <td bgcolor="" width="600px">
-                  <img src="https://softlutions.ec/api/public/unnamed.jpg" width="280"  height="300">
+                  <img src="https://softlutions.ec/api/public/logoazul.jpg" width="280"  height="300">
                   <br>
       
                       <h2 style="color: #fff; text-align:center">Job & Care</h2>
@@ -117,7 +117,7 @@ async function sendMailHoja(user, callback) {
               <table border="0" cellpadding="0" cellspacing="0" width="100px" background-color="#56c2c6" bgcolor="#56c2c6" align="center">
               <tr height="100px">  
                   <td bgcolor="" width="600px">
-                  <img src="https://softlutions.ec/api/public/unnamed.jpg" width="280"  height="300">
+                  <img src="https://softlutions.ec/api/public/logoazul.jpg" width="280"  height="300">
                   <br>
       
                       <h2 style="color: #fff; text-align:center">Job & Care</h2>
@@ -163,7 +163,7 @@ async function sendMailPO(user, callback) {
               <table border="0" cellpadding="0" cellspacing="0" width="100px" background-color="#56c2c6" bgcolor="#56c2c6" align="center">
               <tr height="100px">  
                   <td bgcolor="" width="600px">
-                  <img src="https://softlutions.ec/api/public/unnamed.jpg" width="280"  height="300">
+                  <img src="https://softlutions.ec/api/public/logoazul.jpg" width="280"  height="300">
                   <br>
       
                       <h2 style="color: #fff; text-align:center">Job & Care</h2>
@@ -211,7 +211,7 @@ async function sendMailHojaP(user, callback) {
               <table border="0" cellpadding="0" cellspacing="0" width="100px" background-color="#56c2c6" bgcolor="#56c2c6" align="center">
               <tr height="100px">  
                   <td bgcolor="" width="600px">
-                  <img src="https://softlutions.ec/api/public/unnamed.jpg" width="280"  height="300">
+                  <img src="https://softlutions.ec/api/public/logoazul.jpg" width="280"  height="300">
                   <br>
       
                       <h2 style="color: #fff; text-align:center">Job & Care</h2>
@@ -258,17 +258,17 @@ async function sendMailPostulacion(user, callback) {
               <table border="0" cellpadding="0" cellspacing="0" width="100px" background-color="#56c2c6" bgcolor="#56c2c6" align="center">
               <tr height="100px">  
                   <td bgcolor="" width="600px">
-                  <img src="https://softlutions.ec/api/public/unnamed.jpg" width="280"  height="300">
+                  <img src="https://softlutions.ec/api/public/logoazul.jpg" width="280"  height="300">
                   <br>
       
                       <h2 style="color: #fff; text-align:center">Job & Care</h2>
                       <h2 style="color: #fff; text-align:center">NUEVA POSTULACIÓN</h2>
-                      <h3 style="color: #fff; text-align:left">&nbsp; Celular: ${user.telefono}</h3>
-                      <h3 style="color: #fff; text-align:left">&nbsp; Nombre  : ${user.nombre}</h3>
-                      <h3 style="color: #fff; text-align:left">&nbsp; Estado : ${user.estado}</h3>
-                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      <h3 style="color: #fff; text-align:left">&nbsp; Nombre  : ${user.nombreEmpleado}</h3>
+                      <h3 style="color: #fff; text-align:left">&nbsp; Celular: ${user.telefonohoja}</h3>
                      
-                      <a align="center"  href='${user.urlPdf}' target=_blank><button style="text-decoration: none;
+                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                     
+                      <a align="center"  href='${user.urlPdfHoja}' target=_blank><button style="text-decoration: none;
                       padding: 10px;
                       font-weight: 600;
                       font-size: 20px;
@@ -303,7 +303,7 @@ mailCTRL.enviarMailContacto = (user, res) => {
 };
 //la variable user puede ser cualquiera
 async function sendMailContacto(user, callback) {
-    var maillist = [user.emailPostulante, 'registro@jobandcare.com']
+    var maillist = [user.emailHoja, 'registro@jobandcare.com']
     let transporter = nodemailer.createTransport(config.transporter);
 
     let mailOptions = {
@@ -315,15 +315,15 @@ async function sendMailContacto(user, callback) {
               <table border="0" cellpadding="0" cellspacing="0" width="100px" background-color="#56c2c6" bgcolor="#56c2c6" align="center">
               <tr height="100px">  
                   <td bgcolor="" width="600px">
-                  <img src="https://softlutions.ec/api/public/unnamed.jpg" width="280"  height="300">
+                  <img src="https://softlutions.ec/api/public/logoazul.jpg" width="280"  height="300">
                   <br>
       
                       <h2 style="color: #fff; text-align:center">Job & Care</h2>
                       <h2 style="color: #fff; text-align:center">EMPLEADOR CONTACTANDO</h2>
-                      <h3 style="color: #fff; text-align:left">&nbsp; Nombre  : ${user.nombre}</h3>
-                      <h3 style="color: #fff; text-align:left">&nbsp; Celular: ${user.telefono}</h3>
+                
+                      <h3 style="color: #fff; text-align:left">&nbsp; Celular: ${user.telefonoEmpleador}</h3>
                   
-                      <h3 style="color: #fff; text-align:left">&nbsp; Correo : ${user.emailEmpleador}</h3>
+                      <h3 style="color: #fff; text-align:left">&nbsp; Correo : ${user.title}</h3>
                       <h3 style="color: #fff; text-align:left">&nbsp; Pudes llamar o enviar correo 📱📨</h3>
                     
                      
@@ -366,7 +366,7 @@ async function sendMailCurso(user, callback) {
               <table border="0" cellpadding="0" cellspacing="0" width="100px" background-color="#56c2c6" bgcolor="#56c2c6" align="center">
               <tr height="100px">  
                   <td bgcolor="" width="600px">
-                  <img src="https://softlutions.ec/api/public/unnamed.jpg" width="280"  height="300">
+                  <img src="https://softlutions.ec/api/public/logoazul.jpg" width="280"  height="300">
                   <br>
       
                       <h2 style="color: #fff; text-align:center">Job & Care</h2>
@@ -415,7 +415,7 @@ async function sendMailCursoAdmin(user, callback) {
               <table border="0" cellpadding="0" cellspacing="0" width="100px" background-color="#56c2c6" bgcolor="#56c2c6" align="center">
               <tr height="100px">  
                   <td bgcolor="" width="600px">
-                  <img src="https://softlutions.ec/api/public/unnamed.jpg" width="280"  height="300">
+                  <img src="https://softlutions.ec/api/public/logoazul.jpg" width="280"  height="300">
                   <br>
       
                       <h2 style="color: #fff; text-align:center">Job & Care</h2>
