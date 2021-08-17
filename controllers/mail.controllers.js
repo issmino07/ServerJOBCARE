@@ -445,4 +445,4 @@ async function sendMailCursoAdmin(user, callback) {
 }
 //Aqui termina los correos de los cursos ===============================================================//
 
-module.exports = mailCTRL;
+module.exports = mailCTRL;  
