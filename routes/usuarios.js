@@ -5,7 +5,7 @@ const { Router } = require('express');
 
 var mdAutenticacion = require('../middlewares/autenticacion');
 
-const { getUsuarios, crearUsuario, actualizarUsuarioPlan, borrarUsuario, actualizarUser, usuariosAdmin, actualizarUsuarioAdmin, deleteUser } = require('../controllers/usuarios');
+const { getUsuarios, crearUsuario, actualizarUsuarioPlan, borrarUsuario, actualizarUser, usuariosAdmin, actualizarUsuarioAdmin, deleteUser, actualizarRegistro, getIdUsuario} = require('../controllers/usuarios');
 //const { validarJWT } = require('../middlewares/validar-jwt');
 
 
@@ -38,6 +38,12 @@ router.put( '/plan',
 
      actualizarUsuarioPlan
 );
+
+router.put( '/registro/user',
+actualizarRegistro
+);
+
+router.get('/:_id',getIdUsuario);
 
 
 router.delete( '/:id',

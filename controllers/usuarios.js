@@ -115,6 +115,52 @@ const actualizarUsuario = async (req, res = response) => {
 
 }
 
+// ACTUALIZAR OPCION
+const actualizarRegistro =  (req, res) => {
+    //Encuentra un cliente y actualízalo
+    Usuario.findByIdAndUpdate(req.body._id, req.body, { new: true })
+        .then(curso => {
+            if (!curso) {
+                return res.status(404).json({
+                    msg: "Opciones not found with id " + req.params._id
+                });
+            }
+            res.json(curso);
+        }).catch(err => {
+            if (err.kind === 'ObjectId') {
+                return res.status(404).json({
+                    msg: "Opciones not found with id " + req.params._id
+                });
+            }
+            return res.status(500).json({
+                msg: "Error updating opciones with id " + req.params._id
+            });
+        });
+};
+
+//ENCUENTRE UNA OPCION
+const getIdUsuario =  (req, res) => {
+    Usuario.findById(req.params._id)
+        .then(hoja => {
+            if (!hoja) {
+                return res.status(404).json({
+                    msg: "Opciones not found with id " + req.params._id
+                });
+            }
+            res.json(hoja);
+        }).catch(err => {
+            if (err.kind === 'ObjectId') {
+                return res.status(404).json({
+                    msg: "Opciones not found with id " + req.params._id
+                });
+            }
+            return res.status(500).json({
+                msg: "Error retrieving Opciones with id " + req.params._id
+            });
+        });
+};
+
+
 
 const borrarUsuario = async(req, res = response ) => {
 
@@ -379,5 +425,7 @@ module.exports = {
     actualizarUser,
     borrarUsuario,
     deleteUser,
-    actualizarUsuarioPlan
+    actualizarUsuarioPlan,
+    actualizarRegistro,
+    getIdUsuario
 }
